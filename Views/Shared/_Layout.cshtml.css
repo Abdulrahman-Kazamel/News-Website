@@ -1,0 +1,44 @@
+/* You can add custom styles for your layout here */
+
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+    background: #f8f9fa;
+}
+
+.header {
+    background: #1977cc;
+    color: #fff;
+}
+
+.footer {
+    background: #f8f9fa;
+    color: #444;
+}
+
+.cta-btn {
+    background: #1977cc;
+    color: #fff;
+    border-radius: 50px;
+    padding: 8px 24px;
+    transition: 0.3s;
+}
+
+.cta-btn:hover {
+    background: #145a96;
+    color: #fff;
+}
+
+.logo img {
+    max-height: 40px;
+}
+
+.social-links a {
+    color: #1977cc;
+    margin: 0 8px;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.social-links a:hover {
+    color: #145a96;
+} 

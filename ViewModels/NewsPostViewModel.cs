@@ -1,0 +1,39 @@
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using NewsWebsite.Models;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace NewsWebsite.ViewModels
+{
+    public class NewsPostViewModel
+    {
+        [Required(ErrorMessage = "Title is required")]
+        [StringLength(500, ErrorMessage = "Title cannot exceed 500 characters")]
+        public string Title { get; set; } = string.Empty;
+
+        [Required(ErrorMessage = "Date is required")]
+        public DateTime Date { get; set; } = default!;
+
+
+        public string? Image { get; set; }
+        [Required(ErrorMessage = "Topic is required")]
+        [StringLength(2000, ErrorMessage = "Topic cannot exceed 2000 characters")]
+        public string Topic { get; set; } = string.Empty;
+
+        [Display(Name = "Category")]
+        [Required(ErrorMessage = "Please select a category")]
+        public int CategoryId { get; set; }
+        //[BindNever]  // ✅ Prevent validation or binding
+        public List<SelectListItem>? Categories { get; set; }
+
+        //[Required(ErrorMessage = "Please select an image file")]
+        [NotMapped]
+        public IFormFile File { get; set; } = default!;
+
+       
+       
+
+
+    }
+}

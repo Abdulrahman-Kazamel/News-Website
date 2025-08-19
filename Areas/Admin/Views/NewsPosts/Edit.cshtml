@@ -1,0 +1,57 @@
+﻿@using NewsWebsite.ViewModels
+@model NewsPostViewModel
+
+
+
+<div class="container">
+    @* asp-action="Create" *@
+    @* <form  asp-action="Create" enctype="multipart/form-data"> *@
+    <form asp-action="Create" method="post" enctype="multipart/form-data">
+        @Html.AntiForgeryToken()
+
+        @* <div asp-validation-summary="ModelOnly" class="text-danger"></div> *@
+
+        <div class="mb-3 form-group">
+            <label asp-for="Title" class="form-label"></label>
+            <input asp-for="Title" class="form-control">
+            <span asp-validation-for="Title" class="text-danger"></span>
+            @* <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> *@
+        </div>
+
+        <div class="mb-3 form-group">
+            <label asp-for="Date" class="form-label"></label>
+            <input asp-for="Date" type="date" class="form-control">
+            <span asp-validation-for="Date" class="text-danger"></span>
+            @* <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> *@
+        </div>
+
+        <div class="mb-3 form-group">
+            <label asp-for="File" class="form-label"></label>
+            <input asp-for="File" type="file" class="form-control">
+            <span asp-validation-for="File" class="text-danger"></span>
+            @* <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> *@
+        </div>
+        <div class="mb-3 form-group">
+            <label asp-for="CategoryId" class="form-label"></label>
+            <select asp-for="CategoryId" asp-items="@Model.Categories" class="form-select mb-5">
+                <option value="">Open this select menu</option>
+            </select>
+            <span asp-validation-for="CategoryId" class="text-danger"></span>
+        </div>
+        <div class="mb-3 form-group">
+            <label asp-for="Topic" class="form-label"></label>
+            <textarea asp-for="Topic" class="form-control" rows="3"></textarea>
+            <span asp-validation-for="Topic" class="text-danger"></span>
+        </div>
+
+
+
+        <input type="submit" value="Save" class="btn btn-primary" />
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
