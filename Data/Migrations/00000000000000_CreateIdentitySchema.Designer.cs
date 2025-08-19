@@ -9,7 +9,7 @@ using NewsWebsite.Data;
 
 namespace NewsWebsite.Data.Migrations
 {
-    [DbContext(typeof(IdentityDbContext))]
+    [DbContext(typeof(ApplicationDbContext))]
     [Migration("00000000000000_CreateIdentitySchema")]
     partial class CreateIdentitySchema
     {

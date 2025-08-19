@@ -10,7 +10,7 @@ using NewsWebsite.Data;
 
 namespace NewsWebsite.Data.Migrations
 {
-    [DbContext(typeof(IdentityDbContext))]
+    [DbContext(typeof(ApplicationDbContext))]
     partial class IdentityDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

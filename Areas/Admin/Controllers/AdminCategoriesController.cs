@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace NewsWebsite.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     [Authorize]
     public class AdminCategoriesController : Controller
     {

@@ -6,20 +6,25 @@ namespace NewsWebsite
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            var IdentityconnectionString = builder.Configuration.GetConnectionString("IdentityConnection") ?? throw new InvalidOperationException("Connection string 'IdentityConnection' not found.");
+            //var IdentityconnectionString = builder.Configuration.GetConnectionString("IdentityConnection") ?? throw new InvalidOperationException("Connection string 'IdentityConnection' not found.");
             var NewsConnectionString = builder.Configuration.GetConnectionString("NewsConnection") ?? throw new InvalidOperationException("Connection string 'NewsConnection' not found.");
 
-            // Use the same connection string for both contexts
-            builder.Services.AddDbContext<IdentityDbContext>(options =>
-                options.UseSqlServer(IdentityconnectionString));
+       
 
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(NewsConnectionString));
+
+            // Identity setup
+            builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
+
+
 
             // Configure password required services .
             builder.Services.Configure<IdentityOptions>(options =>
@@ -42,10 +47,52 @@ namespace NewsWebsite
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
             builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<IdentityDbContext>();
+                .AddEntityFrameworkStores<ApplicationDbContext>();
             builder.Services.AddControllersWithViews();
 
             var app = builder.Build();
+
+            // Seed Roles + Admin user
+            using (var scope = app.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+                var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+                var userManager = services.GetRequiredService<UserManager<IdentityUser>>();
+
+                string[] roleNames = { "Admin", "default" };
+
+                foreach (var roleName in roleNames)
+                {
+                    var roleExists = await roleManager.RoleExistsAsync(roleName);
+                    if (!roleExists)
+                    {
+                        await roleManager.CreateAsync(new IdentityRole(roleName));
+                    }
+                }
+
+                var adminEmail = "admin@example.com";
+                var adminUser = await userManager.FindByEmailAsync(adminEmail);
+
+                if (adminUser == null)
+                {
+                    adminUser = new IdentityUser
+                    {
+                        UserName = "admin",
+                        Email = adminEmail,
+                        EmailConfirmed = true
+                    };
+
+                    var result = await userManager.CreateAsync(adminUser, "Admin@123");
+                    if (result.Succeeded)
+                    {
+                        await userManager.AddToRoleAsync(adminUser, "Admin");
+                    }
+                }
+            }
+
+
+
+
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
@@ -65,9 +112,10 @@ namespace NewsWebsite
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseAuthorization();
 
 
-#pragma warning disable ASP0014 
+          #pragma warning disable ASP0014
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

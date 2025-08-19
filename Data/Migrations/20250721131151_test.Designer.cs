@@ -11,7 +11,7 @@ using NewsWebsite.Data;
 
 namespace NewsWebsite.Data.Migrations
 {
-    [DbContext(typeof(IdentityDbContext))]
+    [DbContext(typeof(ApplicationDbContext))]
     [Migration("20250721131151_test")]
     partial class test
     {
