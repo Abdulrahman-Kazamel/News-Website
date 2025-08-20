@@ -1,7 +1,9 @@
-using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using NewsWebsite.Data;
 using NewsWebsite.Models;
+using NewsWebsite.ViewModels;
+using System.Diagnostics;
 
 namespace NewsWebsite.Controllers
 {
@@ -9,29 +11,30 @@ namespace NewsWebsite.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly ApplicationDbContext _context;
-      
+
         public HomeController(ILogger<HomeController> logger, ApplicationDbContext context)
         {
             _context = context;
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            var ViewModel = new HomePageViewModel
+            {
+                Categories = await _context.Categories.ToListAsync(),
+                Contacts = await _context.Contacts.Where(c => !string.IsNullOrEmpty(c.Message)).ToListAsync(),
+                ContactForm = new Contact()  
+            };
 
-
-            //var data = _context.categories.ToList();
-            //return View(data);
-            _logger.LogInformation("Home page requested.");
-            var Categories = _context.Categories.ToList();
-            return View(Categories);
+            return View(ViewModel);
         }
 
         public IActionResult About()
         {
             return View();
         }
-  
+
         public IActionResult Privacy()
         {
             return View();
@@ -41,5 +44,36 @@ namespace NewsWebsite.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+
+        public IActionResult ContactUs()
+        {
+            return PartialView("partial/_Contactus", new Contact());
+
+        }
+
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        //[Authorize(Roles = "Admin")]
+        public IActionResult ContactUs(Contact contact)
+        {
+
+            if (!ModelState.IsValid)
+            {
+                return PartialView("partial/_Contactus", contact);
+            }
+
+
+            _context.Contacts.Add(contact);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+
+
+
+        }
+
+
+
+
     }
 }

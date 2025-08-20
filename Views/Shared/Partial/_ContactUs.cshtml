@@ -46,32 +46,32 @@
                     <div class="row g-3">
 
                         <div class="col-md-6">
-                            <input type="text" asp-for="Name" class="form-control" placeholder="Your Name" >
-                            <span asp-validation-for="Name" class="text-danger" ></span>
+                            <input type="text" asp-for="Name" class="form-control" placeholder="Your Name">
+                            <span asp-validation-for="Name" class="text-danger"></span>
                         </div>
 
                         <div class="col-md-6">
-                            <input type="email" asp-for="Email" class="form-control" placeholder="Your Email" >
+                            <input type="email" asp-for="Email" class="form-control" placeholder="Your Email">
                             <span asp-validation-for="Email" class="text-danger"></span>
                         </div>
                         <div class="col-12">
-                            <input type="text" asp-for="Phone" class="form-control" placeholder="Please enter your phone" >
+                            <input type="text" asp-for="Phone" class="form-control" placeholder="Please enter your phone">
                             <span asp-validation-for="Phone" class="text-danger"></span>
                         </div>
                         <div class="col-12">
-                            <input type="text" asp-for="Subject" class="form-control" placeholder="Subject" >
+                            <input type="text" asp-for="Subject" class="form-control" placeholder="Subject">
                             <span asp-validation-for="Subject" class="text-danger"></span>
                         </div>
 
                         <div class="col-12">
-                            <textarea asp-for="Message" class="form-control" rows="5" placeholder="Message" ></textarea>
+                            <textarea asp-for="Message" class="form-control" rows="5" placeholder="Message"></textarea>
                             <span asp-validation-for="Message" class="text-danger"></span>
                         </div>
 
                         <div class="col-12 text-center">
                             <div class="loading d-none">Loading</div>
                             <div class="error-message text-danger"></div>
-                            
+
                             @* <div class="sent-message text-success">Your message has been sent. Thank you!</div> *@
 
                             <button type="submit" class="btn btn-primary px-5 rounded-pill">Send Message</button>

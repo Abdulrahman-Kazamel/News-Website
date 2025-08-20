@@ -66,9 +66,15 @@
                 <nav id="navmenu" class="navmenu">
                     <ul>
                         <li><a asp-controller="Home" asp-action="Index">Home</a></li>
-                        <li><a asp-controller="Contacts" asp-action="ContactUs">Contact US</a></li>
-                     
-                        <li><a asp-controller="Contacts" asp-action="anotherIndex">Another Messages</a></li>
+                        <li><a asp-controller="NewsPosts" asp-action="Index">News</a></li>
+
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li><a asp-controller="Contacts" asp-action="Index">Contacts</a></li>
+                        }
+
+                        @* <li><a asp-controller="Contacts" asp-action="anotherIndex">Another Messages</a></li> *@
+                        <li><a asp-controller="Home" asp-action="Index" asp-fragment="contact">Contact US</a></li>
                         <partial name="_LoginPartial" />
                     </ul>
                     <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -79,8 +85,8 @@
         </div>
     </header>
 
-    <partial class="container-fluid" name="partial/_HeroSection" />
-    <main class="main container">
+    
+    <main class="main">
         @RenderBody()
     </main>
 
@@ -183,7 +189,7 @@
     <!-- Main JS File -->
     <script src="~/assets/js/main.js"></script>
 
-    
+
 
     @await RenderSectionAsync("Scripts", required: false)
 

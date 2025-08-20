@@ -8,7 +8,7 @@ using NewsWebsite.ViewModels;
 
 namespace NewsWebsite.Areas.Admin.Controllers
 {
-    [Area("Admin")]
+    //[Area("Admin")]
     //[Authorize(Roles = "Admin")]
     public class NewsPostsController : Controller
     {
@@ -95,13 +95,23 @@ namespace NewsWebsite.Areas.Admin.Controllers
 
 
 
-        //public IActionResult Edit(int id)
-        //{
-        //    var newsPost = _context.NewsPosts
-        //        .Include(p => p.Category)
-        //        .FirstOrDefault(p => p.Id == id);
-        //    return View();
-        //}
+        public IActionResult Edit(int id)
+        {
+            //var newsPost = new NewsPost
+            //{
+            //    Title = viewModel.Title,
+            //    Date = viewModel.Date,
+            //    Image = uploadedFileName,
+            //    Topic = viewModel.Topic,
+            //    CategoryId = viewModel.CategoryId
+            //};
+            var newsPost = new NewsPostViewModel();
+
+            //var newsPost = _context.NewsPosts
+            //    .Include(p => p.Category)
+            //    .FirstOrDefault(p => p.Id == id);
+            return View(newsPost);
+        }
 
         private void LogModelStateErrors()
         {
