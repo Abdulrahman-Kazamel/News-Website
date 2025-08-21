@@ -1,5 +1,4 @@
-﻿@using NewsWebsite.Core.Models
-@model List<NewsPost>
+﻿@model List<NewsPost>
 
 <div class="container">
     <table class="table table-striped">
@@ -26,8 +25,10 @@
                     <td><img style="max-width: 250px;" src="~/assets/img/gallery/@post.Image" /> </td>
                     <td>@post.Topic</td>
                     <td>@post.Category.Name</td>
+                   
                     <td>
                         <a asp-route-id="@post.Id" asp-action="Edit" class="btn btn-secondary">Edit</a>
+                        <a asp-route-id="@post.Id" asp-action="Details" class="btn btn-info">Details</a>
                     </td>
 
                 </tr>

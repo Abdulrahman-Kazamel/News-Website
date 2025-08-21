@@ -1,16 +1,21 @@
-﻿<!DOCTYPE html>
+﻿@{
+    ViewData["title"] = "Home";
+}
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Index - Medicio Bootstrap Template</title>
+    <title>News | @ViewData["title"] </title>
     <meta name="description" content="">
     <meta name="keywords" content="">
 
     <!-- Favicons -->
-    <link asp-href="~/assets/img/favicon.png" rel="icon">
-    <link asp-href="~/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <link rel="icon" type="image/x-icon" href="~/favicon.ico" />
+    @* <link asp-href="~/assets/img/apple-touch-icon.png" rel="apple-touch-icon"> *@
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -71,6 +76,7 @@
                         @if (User.IsInRole("Admin"))
                         {
                             <li><a asp-controller="Contacts" asp-action="Index">Contacts</a></li>
+                            <li><a asp-controller="Categories" asp-action="Index">Category</a></li>
                         }
 
                         @* <li><a asp-controller="Contacts" asp-action="anotherIndex">Another Messages</a></li> *@
@@ -85,7 +91,7 @@
         </div>
     </header>
 
-    
+
     <main class="main">
         @RenderBody()
     </main>

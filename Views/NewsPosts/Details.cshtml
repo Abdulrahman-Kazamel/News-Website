@@ -1,5 +1,5 @@
-﻿@using NewsWebsite.Core.Models
-@model List<NewsPost>
+﻿
+@model NewsPost
 
 @{
     ViewData["Title"] = "NewsPost";
@@ -18,20 +18,20 @@
 
 
     <div class="row gy-4 justify-content-between">
-        @foreach (var item in Model)
-        {
+        @* @foreach (var item in Model)
+        { *@
 
             <div class="col-md-6 col-lg-4">
                 <div class=" position-relative align-self-start aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
-                    <img src="~/assets/img/gallery/@item.Image" class="img-fluid" alt="" />
+                    <img src="~/assets/img/gallery/@Model.Image" class="img-fluid" alt="" />
                     <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="glightbox pulsating-play-btn"></a>
                 </div>
                 <div class="content aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
-                    <h3>@item.Title</h3>
-                    <span>@item.Date</span>
+                <h3>@Model.Title</h3>
+                <span>@Model.Date</span>
 
                     <p class="fst-italic">
-                        @item.CategoryId
+                    @Model.CategoryId
                     </p>
                     <ul>
                         <li><i class="bi bi-check2-all"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></li>
@@ -39,16 +39,16 @@
                         <li><i class="bi bi-check2-all"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</span></li>
                     </ul>
                     <p>
-                        @item.Topic
+                    @Model.Topic
                     </p>
 
-                   
-                      
-                    <a class="btn btn-danger" asp-route-id="@item.Id" asp-action="Delete">Delete</a>
+
+
+                <a class="btn btn-danger" asp-route-id="@Model.Id" asp-action="Delete">Delete</a>
                
                 </div>
             </div>
-        }
+        @* } *@
 
     </div>
 

@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using NewsWebsite.Core.Context;
 
@@ -24,13 +24,12 @@ namespace NewsWebsite
             // ------------------------------------------------------------
             builder.Services
                 .AddIdentity<IdentityUser, IdentityRole>()
-                .AddDefaultTokenProviders()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders()
                 .AddDefaultUI();
 
             builder.Services.Configure<IdentityOptions>(options =>
             {
-                // Password settings
                 options.Password.RequireDigit = true;
                 options.Password.RequireLowercase = true;
                 options.Password.RequireUppercase = true;
@@ -38,29 +37,19 @@ namespace NewsWebsite
                 options.Password.RequiredLength = 6;
                 options.Password.RequiredUniqueChars = 0;
 
-                // Lockout settings
                 options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
                 options.Lockout.MaxFailedAccessAttempts = 5;
                 options.Lockout.AllowedForNewUsers = true;
 
-                // User settings
                 options.User.RequireUniqueEmail = true;
             });
- 
 
-
-            // ------------------------------------------------------------
-            // MVC / Razor / Developer Tools
-            // ------------------------------------------------------------
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
             builder.Services.AddControllersWithViews();
             builder.Services.AddRazorPages();
 
             var app = builder.Build();
 
-            // ------------------------------------------------------------
-            // Database Seed: Roles + Admin User
-            // ------------------------------------------------------------
             // ------------------------------------------------------------
             // Database Seed: Roles + Admin User
             // ------------------------------------------------------------
@@ -78,48 +67,44 @@ namespace NewsWebsite
                         await roleManager.CreateAsync(new IdentityRole(roleName));
                 }
 
-                // Ensure admin user exists
-                var adminEmail = "admin@admin.com";
-                var adminPassword = "Admin@123";
-                var adminUser = await userManager.FindByEmailAsync(adminEmail);
+                // Admin credentials
+                var adminEmail = "admin@example.com";
+                var adminPassword = "Admin@1234";
 
-                if (adminUser == null)
+                // Delete old admin if exists
+                var oldAdmin = await userManager.FindByEmailAsync(adminEmail);
+                if (oldAdmin != null)
                 {
-                    adminUser = new IdentityUser
-                    {
-                        UserName = "admin",
-                        Email = adminEmail,
-                        EmailConfirmed = true
-                    };
+                    await userManager.DeleteAsync(oldAdmin);
+                    Console.WriteLine("🗑️ Old admin user deleted.");
+                }
 
-                    var createResult = await userManager.CreateAsync(adminUser, adminPassword);
-                    if (!createResult.Succeeded)
-                    {
-                        throw new Exception("Failed to create admin user: " +
-                            string.Join(", ", createResult.Errors.Select(e => e.Description)));
-                    }
+                // Create fresh admin
+                var adminUser = new IdentityUser
+                {
+                    UserName = adminEmail, // ✅ match email to username
+                    Email = adminEmail,
+                    EmailConfirmed = true
+                };
+
+                var createResult = await userManager.CreateAsync(adminUser, adminPassword);
+                if (!createResult.Succeeded)
+                {
+                    throw new Exception("❌ Failed to create admin user: " +
+                        string.Join(", ", createResult.Errors.Select(e => e.Description)));
                 }
                 else
                 {
-                    // Reset password if user already exists
-                    var resetToken = await userManager.GeneratePasswordResetTokenAsync(adminUser);
-                    var resetResult = await userManager.ResetPasswordAsync(adminUser, resetToken, adminPassword);
-
-                    if (!resetResult.Succeeded)
-                    {
-                        // If password reset fails, log details (to DB/console)
-                        Console.WriteLine("Failed to reset password for admin: " +
-                            string.Join(", ", resetResult.Errors.Select(e => e.Description)));
-                    }
+                    Console.WriteLine($"✅ Admin created: {adminEmail} / {adminPassword}");
                 }
 
-                // Ensure admin user has Admin role
+                // Assign Admin role
                 if (!await userManager.IsInRoleAsync(adminUser, "Admin"))
                 {
                     await userManager.AddToRoleAsync(adminUser, "Admin");
+                    Console.WriteLine("✅ Admin role assigned.");
                 }
             }
-
 
             // ------------------------------------------------------------
             // Middleware Pipeline
@@ -141,14 +126,6 @@ namespace NewsWebsite
 
             app.UseAuthentication();
             app.UseAuthorization();
-
-            // ------------------------------------------------------------
-            // Routing
-            // ------------------------------------------------------------
-            // Optional Admin Area Route
-            //app.MapControllerRoute(
-            //    name: "Admin",
-            //    pattern: "{area:exists}/{controller=Admin}/{action=Index}/{id?}");
 
             app.MapControllerRoute(
                 name: "default",

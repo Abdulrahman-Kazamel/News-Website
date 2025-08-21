@@ -26,9 +26,9 @@
 
   <ItemGroup>
     <Folder Include="Core\Interfaces\" />
+    <Folder Include="Core\Migrations\" />
     <Folder Include="Core\Repositories\" />
     <Folder Include="Core\Models\" />
-    <Folder Include="wwwroot\images\" />
     <Folder Include="wwwroot\lib\jquery\" />
     <Folder Include="wwwroot\lib\jquery\dist\" />
   </ItemGroup>

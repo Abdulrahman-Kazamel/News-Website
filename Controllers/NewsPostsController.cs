@@ -95,7 +95,7 @@ namespace NewsWebsite.Areas.Admin.Controllers
 
 
 
-        public IActionResult Edit(int id)
+        public IActionResult Details(int id)
         {
             //var newsPost = new NewsPost
             //{
@@ -105,12 +105,23 @@ namespace NewsWebsite.Areas.Admin.Controllers
             //    Topic = viewModel.Topic,
             //    CategoryId = viewModel.CategoryId
             //};
-            var newsPost = new NewsPostViewModel();
+            var newsPost = _context.NewsPosts.FirstOrDefault(p => p.Id == id);
 
-            //var newsPost = _context.NewsPosts
-            //    .Include(p => p.Category)
-            //    .FirstOrDefault(p => p.Id == id);
+            //newsPost = new NewsPostViewModel
+            //    {
+            //    _context.NewsPosts.Include(p => p.Category)
+                
+
+
+            //};
             return View(newsPost);
+        }
+
+
+
+        public IActionResult Edit(int id)
+        {
+
         }
 
         private void LogModelStateErrors()
