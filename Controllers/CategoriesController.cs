@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using NewsWebsite.Data;
-using NewsWebsite.Models;
+using NewsWebsite.Core.Context;
+using NewsWebsite.Core.Models;
 
 namespace NewsWebsite.Controllers
 {
@@ -21,33 +21,33 @@ namespace NewsWebsite.Controllers
             return View(await _context.Categories.ToListAsync());
         }
 
-        //[Authorize]
-        //public IActionResult Details(int id)
-        //{ 
-        
-        //    var Category = _context.Categories.Find(id);
-        //    ViewBag.Category = Category.Name;
-        //    return View(_context.NewsPosts.Where(newsPost => newsPost.CategoryId == id).ToList());
-        //}
-
-
-
-        public async Task<IActionResult> Details(int? id)
+        [Authorize]
+        public IActionResult Details(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
 
-            var category = await _context.Categories
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (category == null)
-            {
-                return NotFound();
-            }
-
-            return View(category);
+            var Category = _context.Categories.Find(id);
+            ViewBag.Category = Category.Name;
+            return View(_context.NewsPosts.Where(newsPost => newsPost.CategoryId == id).ToList());
         }
+
+
+
+        //public async Task<IActionResult> Details(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    var category = await _context.Categories
+        //        .FirstOrDefaultAsync(m => m.Id == id);
+        //    if (category == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    return View(category);
+        //}
 
 
         public IActionResult Create()

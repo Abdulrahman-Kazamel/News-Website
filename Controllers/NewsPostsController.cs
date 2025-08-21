@@ -2,8 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using NewsWebsite.Data;
-using NewsWebsite.Models;
+using NewsWebsite.Core.Context;
+using NewsWebsite.Core.Models;
 using NewsWebsite.ViewModels;
 
 namespace NewsWebsite.Areas.Admin.Controllers

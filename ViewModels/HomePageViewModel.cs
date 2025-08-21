@@ -1,4 +1,4 @@
-﻿using NewsWebsite.Models;
+﻿using NewsWebsite.Core.Models;
 
 namespace NewsWebsite.ViewModels
 {

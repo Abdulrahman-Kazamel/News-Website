@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using NewsWebsite.Data;
+using NewsWebsite.Core.Context;
 
 namespace NewsWebsite
 {
@@ -24,8 +24,9 @@ namespace NewsWebsite
             // ------------------------------------------------------------
             builder.Services
                 .AddIdentity<IdentityUser, IdentityRole>()
+                .AddDefaultTokenProviders()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddDefaultTokenProviders();
+                .AddDefaultUI();
 
             builder.Services.Configure<IdentityOptions>(options =>
             {
@@ -45,6 +46,8 @@ namespace NewsWebsite
                 // User settings
                 options.User.RequireUniqueEmail = true;
             });
+ 
+
 
             // ------------------------------------------------------------
             // MVC / Razor / Developer Tools
@@ -143,9 +146,9 @@ namespace NewsWebsite
             // Routing
             // ------------------------------------------------------------
             // Optional Admin Area Route
-            app.MapControllerRoute(
-                name: "Admin",
-                pattern: "{area:exists}/{controller=Admin}/{action=Index}/{id?}");
+            //app.MapControllerRoute(
+            //    name: "Admin",
+            //    pattern: "{area:exists}/{controller=Admin}/{action=Index}/{id?}");
 
             app.MapControllerRoute(
                 name: "default",
