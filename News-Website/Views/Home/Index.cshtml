@@ -1,0 +1,61 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<partial class="container-fluid" name="partial/_HeroSection" />
+
+<section id="featured-services" class="featured-services py-5 bg-light">
+    <div class="container py-4" data-aos="fade-up">
+        <h2 class="text-center mb-5 font-weight-bold text-dark">Explore Categories</h2>
+        <div class="row">
+            @foreach (var item in Model.Categories)
+            {
+                <div class="col-xl-3 col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-item card h-100 border-0 shadow-sm text-center transition-all hover-card">
+                        <div class="card-body d-flex flex-column justify-content-center">
+                            <div class="icon mb-3 text-primary" style="font-size:2.2rem;">
+                                <i class="@item.TitleIcon"></i>
+                            </div>
+                            <h5 class="card-title mb-2">
+                                <a asp-controller="Categories" asp-action="CategoryNews" asp-route-id="@item.Id"
+                                   class="stretched-link text-dark font-weight-bold text-decoration-none">
+                                    @item.Name
+                                </a>
+                            </h5>
+                            <p class="card-text text-muted">@item.Description</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <partial class="container-fluid" name="partial/_Testimonials" model="Model.Contacts" />
+    <partial class="container-fluid" name="partial/_Contactus" model="Model.ContactForm" />
+</section>
+
+<style>
+    /* Smooth hover effect */
+    .hover-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border-radius: 1rem;
+    }
+
+        .hover-card:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Icon Styling */
+        .hover-card .icon i {
+            transition: color 0.3s ease;
+        }
+
+        .hover-card:hover .icon i {
+            color: #007bff; /* Bootstrap primary */
+        }
+
+        /* Title hover */
+        .hover-card a:hover {
+            color: #007bff;
+        }
+</style>

@@ -1,0 +1,89 @@
+﻿@using NewsWebsite.Core.Models
+@model Contact
+
+<section id="contact" class="section contact bg-light py-5">
+
+    <!-- Section Title -->
+    <div class="container text-center mb-5" data-aos="fade-up">
+        <h2 class="fw-bold display-4 mb-3">Get in Touch</h2>
+        <p class="text-muted lead">
+            We'd love to hear from you. Reach out via phone, email, or the form below.
+        </p>
+    </div>
+
+    <!-- Contact Info + Form -->
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row align-items-stretch gy-5">
+
+            <!-- Info Boxes -->
+            <div class="col-lg-5">
+                <div class="row g-4">
+                    <div class="col-12">
+                        <div class="bg-white shadow-sm rounded-lg text-center p-4 h-100 hover-shadow">
+                            <i class="bi bi-geo-alt fs-1 text-primary mb-3"></i>
+                            <h5 class="fw-bold">Address</h5>
+                            <p class="mb-0">A108 Adam Street, New York, NY 535022</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="bg-white shadow-sm rounded-lg text-center p-4 h-100 hover-shadow">
+                            <i class="bi bi-telephone fs-1 text-primary mb-3"></i>
+                            <h5 class="fw-bold">Call Us</h5>
+                            <p class="mb-0">+1 5589 55488 55</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="bg-white shadow-sm rounded-lg text-center p-4 h-100 hover-shadow">
+                            <i class="bi bi-envelope fs-1 text-primary mb-3"></i>
+                            <h5 class="fw-bold">Email Us</h5>
+                            <p class="mb-0">info@example.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="col-lg-7">
+                <div class="card shadow-sm border-0 rounded-lg p-4 h-100">
+                    <form asp-action="ContactUs" method="post" class="h-100 d-flex flex-column justify-content-between">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <input type="text" asp-for="Name" class="form-control form-control-lg rounded-pill" placeholder="Your Name">
+                                <span asp-validation-for="Name" class="text-danger small"></span>
+                            </div>
+
+                            <div class="col-md-6">
+                                <input type="email" asp-for="Email" class="form-control form-control-lg rounded-pill" placeholder="Your Email">
+                                <span asp-validation-for="Email" class="text-danger small"></span>
+                            </div>
+
+                            <div class="col-12">
+                                <input type="text" asp-for="Phone" class="form-control form-control-lg rounded-pill" placeholder="Your Phone">
+                                <span asp-validation-for="Phone" class="text-danger small"></span>
+                            </div>
+
+                            <div class="col-12">
+                                <input type="text" asp-for="Subject" class="form-control form-control-lg rounded-pill" placeholder="Subject">
+                                <span asp-validation-for="Subject" class="text-danger small"></span>
+                            </div>
+
+                            <div class="col-12">
+                                <textarea asp-for="Message" class="form-control form-control-lg rounded-lg" rows="5" placeholder="Message"></textarea>
+                                <span asp-validation-for="Message" class="text-danger small"></span>
+                            </div>
+
+                            <div class="col-12 text-center">
+                                <div class="loading d-none">Loading</div>
+                                <div class="error-message text-danger"></div>
+                                <button type="submit" class="btn btn-primary btn-lg px-5 rounded-pill shadow-sm">
+                                    Send Message
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

@@ -1,0 +1,205 @@
+﻿@{
+	ViewData["title"] = "Home";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+	<title>News | @ViewData["title"]</title>
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+
+	<!-- Favicons -->
+	<link rel="icon" type="image/x-icon" href="~/favicon.ico" />
+
+	<!-- Fonts -->
+	<link href="https://fonts.googleapis.com" rel="preconnect">
+	<link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto&family=Poppins&family=Raleway&display=swap" rel="stylesheet">
+
+	<!-- Vendor CSS Files -->
+	<link href="~/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="~/lib/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+	<link href="~/lib/aos/aos.css" rel="stylesheet">
+	<link href="~/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+	<link href="~/lib/glightbox/css/glightbox.min.css" rel="stylesheet">
+	<link href="~/lib/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+	<!-- Main CSS File -->
+	<link href="~/assets/css/main.css" rel="stylesheet">
+</head>
+
+<body class="index-page">
+
+	<!-- ======= Header ======= -->
+	<header id="header" class="header sticky-top">
+		<div class="topbar d-flex align-items-center">
+			<div class="container d-flex justify-content-center justify-content-md-between">
+				<div class="d-none d-md-flex align-items-center">
+					@{
+						var now = DateTime.Now;
+						var day = now.DayOfWeek;
+						var time = now.TimeOfDay;
+						var isWorkingDay = day != DayOfWeek.Friday;
+						var isWorkingTime = time >= new TimeSpan(9, 0, 0) && time <= new TimeSpan(23, 0, 0);
+						var isOpen = isWorkingDay && isWorkingTime;
+						var color = isOpen ? "green" : "red";
+						var status = isOpen ? "Open Now" : "Closed";
+					}
+					<i class="bi bi-clock mr-2" style="color:@color"></i>
+					<div>
+						<strong>Today:</strong> @now.ToString("dddd - hh:mm tt")
+						<strong style="color:@color">@status</strong>
+					</div>
+				</div>
+				<div class="d-flex align-items-center ml-md-4">
+					<i class="bi bi-phone mr-2"></i> Call us now +2 010-668-947-29
+				</div>
+			</div>
+		</div>
+
+		<div class="branding d-flex align-items-center">
+			<div class="container d-flex align-items-center justify-content-between">
+				<a asp-controller="Home" asp-action="Index" class="logo d-flex align-items-center mr-auto">
+					<img src="https://e47sm22b7ri.exactdn.com/wp-content/uploads/2022/06/Bin-Sabri-PNG-300x101.png?strip=all&lossy=1&ssl=1" alt="Logo">
+				</a>
+
+				<nav id="navmenu" class="navmenu">
+					<ul>
+						<li><a asp-controller="Home" asp-action="Index">Home</a></li>
+
+						<li><a asp-controller="Categories" asp-action="CategoryNews">News</a></li>
+
+						@if (User.IsInRole("Admin"))
+						{
+							<li><a asp-controller="NewsPosts" asp-action="Index">News Admin</a></li>
+
+							<li><a asp-controller="Contacts" asp-action="Index">Contacts</a></li>
+							<li><a asp-controller="Categories" asp-action="Index">Category</a></li>
+						}
+
+						@* <li><a asp-controller="Home" asp-action="Index" asp-fragment="contact">Contact Us</a></li> *@
+						<partial name="_LoginPartial" />
+					</ul>
+					<i class="mobile-nav-toggle d-lg-none bi bi-list"></i>
+				</nav>
+
+				<a class="cta-btn ml-3" asp-controller="Home" asp-action="Index" asp-fragment="contact">Make an Appointment</a>
+			</div>
+		</div>
+	</header>
+	<!-- End Header -->
+
+	<main class="main">
+		@RenderBody()
+	</main>
+
+	<!-- ======= Footer ======= -->
+	<footer id="footer" class="bg-dark text-light pt-5">
+		<div class="container">
+			<div class="row">
+
+				<!-- About & Contact -->
+				<div class="col-lg-4 col-md-6 mb-4">
+					<a href="#" class="d-flex align-items-center mb-3 text-decoration-none">
+						<h4 class="text-white fw-bold mb-0">Medicio</h4>
+					</a>
+					<p class="small mb-2">A108 Adam Street</p>
+					<p class="small mb-2">New York, NY 535022</p>
+					<p class="small mb-2"><strong>Phone:</strong> +1 5589 55488 55</p>
+					<p class="small"><strong>Email:</strong> info@example.com</p>
+
+					<!-- Social Links -->
+					<div class="d-flex mt-3">
+						<a href="#" class="btn btn-outline-light btn-sm rounded-circle mr-2"><i class="bi bi-twitter-x"></i></a>
+						<a href="#" class="btn btn-outline-light btn-sm rounded-circle mr-2"><i class="bi bi-facebook"></i></a>
+						<a href="#" class="btn btn-outline-light btn-sm rounded-circle mr-2"><i class="bi bi-instagram"></i></a>
+						<a href="#" class="btn btn-outline-light btn-sm rounded-circle"><i class="bi bi-linkedin"></i></a>
+					</div>
+				</div>
+
+				<!-- Useful Links -->
+				<div class="col-lg-2 col-md-6 mb-4">
+					<h6 class="fw-bold mb-3">Useful Links</h6>
+					<ul class="list-unstyled small">
+						<li><a href="#" class="text-light text-decoration-none d-block py-1">Home</a></li>
+						<li><a href="#" class="text-light text-decoration-none d-block py-1">About Us</a></li>
+						<li><a href="#" class="text-light text-decoration-none d-block py-1">Services</a></li>
+						<li><a href="#" class="text-light text-decoration-none d-block py-1">Terms of Service</a></li>
+						<li><a href="#" class="text-light text-decoration-none d-block py-1">Privacy Policy</a></li>
+					</ul>
+				</div>
+
+				<!-- Our Services -->
+				<div class="col-lg-2 col-md-6 mb-4">
+					<h6 class="fw-bold mb-3">Our Services</h6>
+					<ul class="list-unstyled small">
+						<li><a href="#" class="text-light text-decoration-none d-block py-1">Web Design</a></li>
+						<li><a href="#" class="text-light text-decoration-none d-block py-1">Web Development</a></li>
+						<li><a href="#" class="text-light text-decoration-none d-block py-1">Product Management</a></li>
+						<li><a href="#" class="text-light text-decoration-none d-block py-1">Marketing</a></li>
+						<li><a href="#" class="text-light text-decoration-none d-block py-1">Graphic Design</a></li>
+					</ul>
+				</div>
+
+				<!-- Resources -->
+				<div class="col-lg-2 col-md-6 mb-4">
+					<h6 class="fw-bold mb-3">Resources</h6>
+					<ul class="list-unstyled small">
+						<li><a href="#" class="text-light text-decoration-none d-block py-1">Molestiae accusamus</a></li>
+						<li><a href="#" class="text-light text-decoration-none d-block py-1">Excepturi dignissimos</a></li>
+						<li><a href="#" class="text-light text-decoration-none d-block py-1">Suscipit distinctio</a></li>
+						<li><a href="#" class="text-light text-decoration-none d-block py-1">Dilecta</a></li>
+						<li><a href="#" class="text-light text-decoration-none d-block py-1">Sit quas consectetur</a></li>
+					</ul>
+				</div>
+
+				<!-- More -->
+				<div class="col-lg-2 col-md-6 mb-4">
+					<h6 class="fw-bold mb-3">More</h6>
+					<ul class="list-unstyled small">
+						<li><a href="#" class="text-light text-decoration-none d-block py-1">Ipsam</a></li>
+						<li><a href="#" class="text-light text-decoration-none d-block py-1">Laudantium</a></li>
+						<li><a href="#" class="text-light text-decoration-none d-block py-1">Dinera</a></li>
+						<li><a href="#" class="text-light text-decoration-none d-block py-1">Trodelas</a></li>
+						<li><a href="#" class="text-light text-decoration-none d-block py-1">Flexo</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<!-- Bottom Bar -->
+			<div class="text-center border-top border-secondary pt-3 mt-4">
+				<p class="small mb-1">© @DateTime.Now.Year <strong>Medicio</strong>. All Rights Reserved</p>
+				<p class="small text-muted mb-0">
+					Designed by <a href="https://bootstrapmade.com/" class="text-decoration-none text-light">BootstrapMade</a>
+				</p>
+			</div>
+		</div>
+	</footer>
+
+	<!-- End Footer -->
+	<!-- Scroll Top -->
+	<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
+		<i class="bi bi-arrow-up-short"></i>
+	</a>
+
+	<!-- Preloader -->
+	<div id="preloader"></div>
+
+	<!-- Vendor JS Files -->
+	<script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="~/lib/aos/aos.js"></script>
+	<script src="~/lib/glightbox/js/glightbox.js"></script>
+	<script src="~/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+	<script src="~/lib/swiper/swiper-bundle.min.js"></script>
+
+	<!-- Main JS File -->
+	<script src="~/assets/js/main.js"></script>
+
+	@await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>

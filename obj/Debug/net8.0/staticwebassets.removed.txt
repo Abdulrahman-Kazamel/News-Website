@@ -1,7 +1,0 @@
-C:\Users\Kazamel\Desktop\Data\projects\Back\NewsWebsite\NewsWebsite\wwwroot\assets\img\testimonials\248aad40-81a7-41e1-8673-dc21a05276e6.png
-C:\Users\Kazamel\Desktop\Data\projects\Back\NewsWebsite\NewsWebsite\wwwroot\assets\img\testimonials\4ee6d56e-22a1-4e9b-ae16-4d8887cf4ded.png
-C:\Users\Kazamel\Desktop\Data\projects\Back\NewsWebsite\NewsWebsite\wwwroot\assets\img\testimonials\a2ca7a56-2129-453e-bf55-7a81f348d31a.png
-C:\Users\Kazamel\Desktop\Data\projects\Back\NewsWebsite\NewsWebsite\wwwroot\assets\img\testimonials\daa17e06-4892-4a26-a21e-779fa5c85568.png
-C:\Users\Kazamel\Desktop\Data\projects\Back\NewsWebsite\NewsWebsite\wwwroot\assets\img\testimonials\testimonials-2.jpg
-C:\Users\Kazamel\Desktop\Data\projects\Back\NewsWebsite\NewsWebsite\wwwroot\assets\img\testimonials\testimonials-4.jpg
-C:\Users\Kazamel\Desktop\Data\projects\Back\NewsWebsite\NewsWebsite\wwwroot\assets\img\testimonials\testimonials-5.jpg

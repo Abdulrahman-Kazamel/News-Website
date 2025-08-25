@@ -1,0 +1,82 @@
+﻿@using NewsWebsite.ViewModels
+@model NewsPostViewModel
+
+@{
+    ViewData["Title"] = "Create Post";
+}
+
+<div class="container mt-4">
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white d-flex align-items-center">
+            <i class="fa fa-plus-circle mr-2"></i>
+            <h5 class="mb-0">Create New Post</h5>
+        </div>
+        <div class="card-body">
+            <form asp-action="Create" method="post" enctype="multipart/form-data">
+                @Html.AntiForgeryToken()
+
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger d-none"></div>
+
+                <!-- Title -->
+                <div class="form-group mb-3">
+                    <label asp-for="Title" class="font-weight-bold"></label>
+                    <input asp-for="Title" class="form-control" placeholder="Enter post title">
+                    <span asp-validation-for="Title" class="text-danger small"></span>
+                </div>
+
+                <!-- Date -->
+                <div class="form-group mb-3">
+                    <label asp-for="Date" class="font-weight-bold"></label>
+                    <input asp-for="Date" type="date" class="form-control">
+                    <span asp-validation-for="Date" class="text-danger small"></span>
+                </div>
+
+                <!-- File Upload -->
+                <div class="form-group mb-3">
+                    <label asp-for="File" class="font-weight-bold"></label>
+                    <div class="custom-file">
+                        <input asp-for="File" type="file" class="custom-file-input" id="fileInput">
+                        <label class="custom-file-label" for="fileInput">Choose image...</label>
+                    </div>
+                    <span asp-validation-for="File" class="text-danger small"></span>
+                </div>
+
+                <!-- Category -->
+                <div class="form-group mb-3">
+                    <label asp-for="CategoryId" class="font-weight-bold"></label>
+                    <select asp-for="CategoryId" asp-items="@Model.Categories" class="form-control">
+                        <option value="">-- Select a Category --</option>
+                    </select>
+                    <span asp-validation-for="CategoryId" class="text-danger small"></span>
+                </div>
+
+                <!-- Topic -->
+                <div class="form-group mb-3">
+                    <label asp-for="Topic" class="font-weight-bold"></label>
+                    <textarea asp-for="Topic" class="form-control" rows="4" placeholder="Write post topic or description"></textarea>
+                    <span asp-validation-for="Topic" class="text-danger small"></span>
+                </div>
+
+                <!-- Submit -->
+                <div class="text-right">
+                    <button type="submit" class="btn btn-primary px-4 rounded-pill">
+                        <i class="fa fa-save mr-1"></i> Save Post
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Show selected file name in custom-file-input
+        $(".custom-file-input").on("change", function () {
+            var fileName = $(this).val().split("\\").pop();
+            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
+    </script>
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
