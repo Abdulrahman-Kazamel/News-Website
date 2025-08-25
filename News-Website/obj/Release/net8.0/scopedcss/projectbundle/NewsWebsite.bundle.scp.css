@@ -1,0 +1,45 @@
+/* _content/NewsWebsite/Views/Shared/_Layout.cshtml.rz.scp.css */
+/* You can add custom styles for your layout here */
+
+body[b-muq4n51umk] {
+    font-family: 'Poppins', Arial, sans-serif;
+    background: #f8f9fa;
+}
+
+.header[b-muq4n51umk] {
+    background: #1977cc;
+    color: #fff;
+}
+
+.footer[b-muq4n51umk] {
+    background: #f8f9fa;
+    color: #444;
+}
+
+.cta-btn[b-muq4n51umk] {
+    background: #1977cc;
+    color: #fff;
+    border-radius: 50px;
+    padding: 8px 24px;
+    transition: 0.3s;
+}
+
+.cta-btn:hover[b-muq4n51umk] {
+    background: #145a96;
+    color: #fff;
+}
+
+.logo img[b-muq4n51umk] {
+    max-height: 40px;
+}
+
+.social-links a[b-muq4n51umk] {
+    color: #1977cc;
+    margin: 0 8px;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.social-links a:hover[b-muq4n51umk] {
+    color: #145a96;
+} 

@@ -289,10 +289,10 @@ C:\Users\EW\Documents\GitHub\News-Website\News-Website\obj\Debug\net8.0\staticwe
 C:\Users\EW\Documents\GitHub\News-Website\News-Website\obj\Debug\net8.0\staticwebassets.build.json.cache
 C:\Users\EW\Documents\GitHub\News-Website\News-Website\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\EW\Documents\GitHub\News-Website\News-Website\obj\Debug\net8.0\staticwebassets.build.endpoints.json
-C:\Users\EW\Documents\GitHub\News-Website\News-Website\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\EW\Documents\GitHub\News-Website\News-Website\obj\Debug\net8.0\NewsWebs.FE8D4A57.Up2Date
 C:\Users\EW\Documents\GitHub\News-Website\News-Website\obj\Debug\net8.0\NewsWebsite.dll
 C:\Users\EW\Documents\GitHub\News-Website\News-Website\obj\Debug\net8.0\refint\NewsWebsite.dll
 C:\Users\EW\Documents\GitHub\News-Website\News-Website\obj\Debug\net8.0\NewsWebsite.pdb
 C:\Users\EW\Documents\GitHub\News-Website\News-Website\obj\Debug\net8.0\NewsWebsite.genruntimeconfig.cache
 C:\Users\EW\Documents\GitHub\News-Website\News-Website\obj\Debug\net8.0\ref\NewsWebsite.dll
+C:\Users\EW\Documents\GitHub\News-Website\News-Website\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
