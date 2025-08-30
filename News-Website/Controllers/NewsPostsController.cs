@@ -23,9 +23,9 @@ namespace NewsWebsite.Areas.Admin.Controllers
             _logger = logger;
         }
         [Authorize(Roles = "Admin")]
-        public IActionResult Index()
+        public  IActionResult Index()
         {
-            var newsPosts = _context.NewsPosts
+            var newsPosts =  _context.NewsPosts
                 .Include(p => p.Category)
                 .OrderByDescending(p => p.Id)
                 .ToList();

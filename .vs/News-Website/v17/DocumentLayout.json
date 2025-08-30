@@ -1,7 +1,24 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\EW\\Documents\\GitHub\\News-Website\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{FEFB7D53-2912-4BD1-9A32-88EF47073A97}|News-Website\\NewsWebsite.csproj|c:\\users\\ew\\documents\\github\\news-website\\news-website\\controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FEFB7D53-2912-4BD1-9A32-88EF47073A97}|News-Website\\NewsWebsite.csproj|solutionrelative:news-website\\controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FEFB7D53-2912-4BD1-9A32-88EF47073A97}|News-Website\\NewsWebsite.csproj|c:\\users\\ew\\documents\\github\\news-website\\news-website\\controllers\\newspostscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FEFB7D53-2912-4BD1-9A32-88EF47073A97}|News-Website\\NewsWebsite.csproj|solutionrelative:news-website\\controllers\\newspostscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FEFB7D53-2912-4BD1-9A32-88EF47073A97}|News-Website\\NewsWebsite.csproj|c:\\users\\ew\\documents\\github\\news-website\\news-website\\views\\categories\\categorynews.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FEFB7D53-2912-4BD1-9A32-88EF47073A97}|News-Website\\NewsWebsite.csproj|solutionrelative:news-website\\views\\categories\\categorynews.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FEFB7D53-2912-4BD1-9A32-88EF47073A97}|News-Website\\NewsWebsite.csproj|c:\\users\\ew\\documents\\github\\news-website\\news-website\\views\\categories\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FEFB7D53-2912-4BD1-9A32-88EF47073A97}|News-Website\\NewsWebsite.csproj|solutionrelative:news-website\\views\\categories\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 12,
           "Children": [
             {
               "$type": "Bookmark",
@@ -54,6 +71,58 @@
             {
               "$type": "Bookmark",
               "Name": "ST:1424034191:0:{83107a3e-496a-485e-b455-16ddb978e55e}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "NewsPostsController.cs",
+              "DocumentMoniker": "C:\\Users\\EW\\Documents\\GitHub\\News-Website\\News-Website\\Controllers\\NewsPostsController.cs",
+              "RelativeDocumentMoniker": "News-Website\\Controllers\\NewsPostsController.cs",
+              "ToolTip": "C:\\Users\\EW\\Documents\\GitHub\\News-Website\\News-Website\\Controllers\\NewsPostsController.cs",
+              "RelativeToolTip": "News-Website\\Controllers\\NewsPostsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-30T15:05:34.361Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CategoriesController.cs",
+              "DocumentMoniker": "C:\\Users\\EW\\Documents\\GitHub\\News-Website\\News-Website\\Controllers\\CategoriesController.cs",
+              "RelativeDocumentMoniker": "News-Website\\Controllers\\CategoriesController.cs",
+              "ToolTip": "C:\\Users\\EW\\Documents\\GitHub\\News-Website\\News-Website\\Controllers\\CategoriesController.cs",
+              "RelativeToolTip": "News-Website\\Controllers\\CategoriesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAKoAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-30T15:05:31.998Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\EW\\Documents\\GitHub\\News-Website\\News-Website\\Views\\Categories\\Index.cshtml",
+              "RelativeDocumentMoniker": "News-Website\\Views\\Categories\\Index.cshtml",
+              "ToolTip": "C:\\Users\\EW\\Documents\\GitHub\\News-Website\\News-Website\\Views\\Categories\\Index.cshtml",
+              "RelativeToolTip": "News-Website\\Views\\Categories\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-08-30T15:02:43.616Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CategoryNews.cshtml",
+              "DocumentMoniker": "C:\\Users\\EW\\Documents\\GitHub\\News-Website\\News-Website\\Views\\Categories\\CategoryNews.cshtml",
+              "RelativeDocumentMoniker": "News-Website\\Views\\Categories\\CategoryNews.cshtml",
+              "ToolTip": "C:\\Users\\EW\\Documents\\GitHub\\News-Website\\News-Website\\Views\\Categories\\CategoryNews.cshtml",
+              "RelativeToolTip": "News-Website\\Views\\Categories\\CategoryNews.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-08-30T15:01:38.978Z",
+              "EditorCaption": ""
             }
           ]
         },

@@ -32,25 +32,7 @@ namespace NewsWebsite.Controllers
             return View(Category);
         }
 
-        [Authorize]
-        public async Task<IActionResult> CategoryNews(int id)
-        {
-
-            //this need to think about bussiness logic later
-            //for now if id is 0 or null return all news posts from all categories
-            if (id == 0 || id == null)
-            {
-
-                return View(_NewsPostsRepository.GetAllAsync());
-
-                //_context.NewsPosts.ToList());
-            }
-            var Category = await _CategoryRepository.GetByIdAsync(id);
-            ViewBag.Category = Category.Name;
-            return View(_NewsPostsRepository.GetCategoryByIdAsync(id));
-
-
-        }
+        
 
 
 
@@ -166,9 +148,27 @@ namespace NewsWebsite.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-       
 
 
+        [Authorize]
+        public async Task<IActionResult> CategoryNews(int id)
+        {
+
+            //this need to think about bussiness logic later
+            //for now if id is 0 or null return all news posts from all categories
+            if (id == 0 || id == null)
+            {
+
+                return View(await _NewsPostsRepository.GetAllAsync());
+
+                //_context.NewsPosts.ToList());
+            }
+            var Category = await _CategoryRepository.GetByIdAsync(id);
+            ViewBag.Category = Category.Name;
+            return View(await _NewsPostsRepository.GetCategoryByIdAsync(id));
+
+
+        }
 
 
 
