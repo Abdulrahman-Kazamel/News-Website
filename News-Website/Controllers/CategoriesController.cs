@@ -18,13 +18,13 @@ namespace NewsWebsite.Controllers
             _NewsPostsRepository = NewsPostRepository;
         }
 
-
+        [Authorize(Roles ="Admin")]
         public async Task<IActionResult> Index()
         {
             return View(await _CategoryRepository.GetAllAsync());
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Details(int id)
         {
 
@@ -59,13 +59,13 @@ namespace NewsWebsite.Controllers
 
 
 
-
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             return View();
         }
 
-        
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,TitleIcon,Name,Description")] Category category)
@@ -81,7 +81,9 @@ namespace NewsWebsite.Controllers
             return View(category);
         }
 
-        // GET: Admin/AdminCategories/Edit/5
+
+        
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -98,7 +100,7 @@ namespace NewsWebsite.Controllers
             return View(category);
         }
 
-       
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,TitleIcon,Name,Description")] Category category)
@@ -131,9 +133,9 @@ namespace NewsWebsite.Controllers
             return View(category);
         }
 
-        
 
 
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -150,9 +152,10 @@ namespace NewsWebsite.Controllers
             return View(category);
         }
 
-       
+
 
         // POST: Admin/AdminCategories/Delete/5
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
