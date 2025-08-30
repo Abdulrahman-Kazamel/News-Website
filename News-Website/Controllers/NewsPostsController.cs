@@ -1,10 +1,6 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using NewsWebsite.Core.Context;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using NewsWebsite.Core.Models;
-using NewsWebsite.ViewModels;
+
 
 namespace NewsWebsite.Areas.Admin.Controllers
 {

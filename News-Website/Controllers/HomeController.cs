@@ -1,8 +1,4 @@
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using NewsWebsite.Core.Context;
 using NewsWebsite.Core.Models;
-using NewsWebsite.ViewModels;
 using System.Diagnostics;
 
 namespace NewsWebsite.Controllers

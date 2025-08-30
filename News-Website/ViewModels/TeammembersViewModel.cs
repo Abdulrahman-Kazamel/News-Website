@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-
-namespace NewsWebsite.ViewModels
+﻿namespace NewsWebsite.ViewModels
 {
     public class TeammembersViewModel
     {

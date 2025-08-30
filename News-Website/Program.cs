@@ -1,10 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using NewsWebsite.Core.Context;
-using NewsWebsite.Core.Interfaces;
-using NewsWebsite.Core.Repositories;
-
-namespace NewsWebsite
+﻿namespace NewsWebsite
 {
     public class Program
     {

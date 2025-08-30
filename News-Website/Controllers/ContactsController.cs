@@ -1,8 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using NewsWebsite.Core.Context;
-using NewsWebsite.Core.Models;
+﻿using NewsWebsite.Core.Models;
 
 namespace NewsWebsite.Controllers
 {
