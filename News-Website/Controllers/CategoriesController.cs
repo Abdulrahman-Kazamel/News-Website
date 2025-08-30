@@ -1,72 +1,63 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using NewsWebsite.Core.Context;
+using NewsWebsite.Core.Interfaces;
 using NewsWebsite.Core.Models;
 
 namespace NewsWebsite.Controllers
 {
     public class CategoriesController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly ICategoryRepository _CategoryRepository;
+        private readonly INewsPostRepository _NewsPostsRepository;
 
-        public CategoriesController(ApplicationDbContext context)
+        public CategoriesController(
+            ICategoryRepository CategoryRepository, INewsPostRepository NewsPostRepository)
         {
-            _context = context;
+            _CategoryRepository = CategoryRepository;
+            _NewsPostsRepository = NewsPostRepository;
         }
 
 
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Categories.ToListAsync());
+            return View(await _CategoryRepository.GetAllAsync());
         }
 
         [Authorize]
-        public IActionResult Details(int id)
+        public async Task<IActionResult> Details(int id)
         {
 
-            var Category = _context.Categories.Find(id);
+            var Category = await _CategoryRepository.GetByIdAsync(id);
+
+
             //ViewBag.Category = Category.Name;
             //return View(_context.NewsPosts.Where(newsPost => newsPost.CategoryId == id).ToList());
             return View(Category);
         }
 
         [Authorize]
-        public IActionResult CategoryNews(int id)
+        public async Task<IActionResult> CategoryNews(int id)
         {
 
             //this need to think about bussiness logic later
             //for now if id is 0 or null return all news posts from all categories
             if (id == 0 || id == null)
             {
-              
-                return View(_context.NewsPosts.ToList());
+
+                return View(_NewsPostsRepository.GetAllAsync());
+
+                //_context.NewsPosts.ToList());
             }
-            var Category = _context.Categories.Find(id);
+            var Category = await _CategoryRepository.GetByIdAsync(id);
             ViewBag.Category = Category.Name;
-            return View(_context.NewsPosts.Where(newsPost => newsPost.CategoryId == id).ToList());
-           
+            return View(_NewsPostsRepository.GetCategoryByIdAsync(id));
+
+
         }
 
 
 
-
-        //public async Task<IActionResult> Details(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    var category = await _context.Categories
-        //        .FirstOrDefaultAsync(m => m.Id == id);
-        //    if (category == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return View(category);
-        //}
 
 
         public IActionResult Create()
@@ -74,17 +65,17 @@ namespace NewsWebsite.Controllers
             return View();
         }
 
-        // POST: Admin/AdminCategories/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,TitleIcon,Name,Description")] Category category)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(category);
-                await _context.SaveChangesAsync();
+                _CategoryRepository.AddAsync(category);
+
+                await _CategoryRepository.SaveAsync();
+
                 return RedirectToAction(nameof(Index));
             }
             return View(category);
@@ -98,7 +89,8 @@ namespace NewsWebsite.Controllers
                 return NotFound();
             }
 
-            var category = await _context.Categories.FindAsync(id);
+            var category = await _CategoryRepository.GetByIdAsync(id.Value);
+
             if (category == null)
             {
                 return NotFound();
@@ -106,9 +98,7 @@ namespace NewsWebsite.Controllers
             return View(category);
         }
 
-        // POST: Admin/AdminCategories/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+       
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,TitleIcon,Name,Description")] Category category)
@@ -122,12 +112,12 @@ namespace NewsWebsite.Controllers
             {
                 try
                 {
-                    _context.Update(category);
-                    await _context.SaveChangesAsync();
+                    _CategoryRepository.Update(category);
+                    await _CategoryRepository.SaveAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CategoryExists(category.Id))
+                    if (!_CategoryRepository.CategoryExists(category.Id))
                     {
                         return NotFound();
                     }
@@ -141,7 +131,9 @@ namespace NewsWebsite.Controllers
             return View(category);
         }
 
-        // GET: Admin/AdminCategories/Delete/5
+        
+
+
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -149,8 +141,7 @@ namespace NewsWebsite.Controllers
                 return NotFound();
             }
 
-            var category = await _context.Categories
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var category = await _CategoryRepository.GetByIdAsync(id.Value);
             if (category == null)
             {
                 return NotFound();
@@ -159,28 +150,24 @@ namespace NewsWebsite.Controllers
             return View(category);
         }
 
-        //from here admin
+       
 
         // POST: Admin/AdminCategories/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var category = await _context.Categories.FindAsync(id);
+            var category = await _CategoryRepository.GetByIdAsync(id);
             if (category != null)
             {
-                _context.Categories.Remove(category);
+                _CategoryRepository.Delete(category);
             }
 
-            await _context.SaveChangesAsync();
+            await _CategoryRepository.SaveAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool CategoryExists(int id)
-        {
-            return _context.Categories.Any(e => e.Id == id);
-        }
-
+       
 
 
 

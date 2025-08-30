@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using NewsWebsite.Core.Context;
+using NewsWebsite.Core.Interfaces;
+using NewsWebsite.Core.Repositories;
 
 namespace NewsWebsite
 {
@@ -15,9 +17,13 @@ namespace NewsWebsite
             // ------------------------------------------------------------
             var connectionString = builder.Configuration.GetConnectionString("NewsConnection")
                 ?? throw new InvalidOperationException("Connection string 'NewsConnection' not found.");
-
+            //Register my Repositories
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(connectionString));
+
+            builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            builder.Services.AddScoped<INewsPostRepository, NewsPostRepository>();
+            builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 
             // ------------------------------------------------------------
             // Identity Configuration
