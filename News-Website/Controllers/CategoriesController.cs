@@ -7,12 +7,16 @@ namespace NewsWebsite.Controllers
         private readonly ICategoryRepository _CategoryRepository;
         private readonly INewsPostRepository _NewsPostsRepository;
 
-        public CategoriesController(
-            ICategoryRepository CategoryRepository, INewsPostRepository NewsPostRepository)
+        public CategoriesController( ICategoryRepository CategoryRepository, INewsPostRepository NewsPostRepository)
         {
             _CategoryRepository = CategoryRepository;
             _NewsPostsRepository = NewsPostRepository;
         }
+
+        /*
+                                Index
+
+        */
 
         [Authorize(Roles ="Admin")]
         public async Task<IActionResult> Index()
@@ -20,21 +24,28 @@ namespace NewsWebsite.Controllers
             return View(await _CategoryRepository.GetAllAsync());
         }
 
+        /*
+                                Details
+         
+         */
+
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Details(int id)
         {
-
-            var Category = await _CategoryRepository.GetByIdAsync(id);
-
-
+            //old implentantion
             //ViewBag.Category = Category.Name;
             //return View(_context.NewsPosts.Where(newsPost => newsPost.CategoryId == id).ToList());
+
+            var Category = await _CategoryRepository.GetByIdAsync(id);
             return View(Category);
         }
 
-        
 
 
+        /*
+                            Create
+
+        */
 
 
         [Authorize(Roles = "Admin")]
@@ -60,7 +71,12 @@ namespace NewsWebsite.Controllers
         }
 
 
-        
+        /*
+                                    Edit
+
+        */
+
+
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
@@ -111,7 +127,10 @@ namespace NewsWebsite.Controllers
             return View(category);
         }
 
+        /*
 
+                                    Delete
+        */
 
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
@@ -132,7 +151,7 @@ namespace NewsWebsite.Controllers
 
 
 
-        // POST: Admin/AdminCategories/Delete/5
+        // POST
         [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -148,6 +167,12 @@ namespace NewsWebsite.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+
+        /*
+                    Category News is the handles  all news posts for users
+                    which I think to move it later inside news posts
+
+        */
 
 
         [Authorize]

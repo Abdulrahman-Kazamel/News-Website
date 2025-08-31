@@ -1,76 +1,105 @@
-﻿using NewsWebsite.Core.Models;
+﻿using System.Threading.Tasks;
+using NewsWebsite.Core.Interfaces;
+using NewsWebsite.Core.Models;
 
 namespace NewsWebsite.Controllers
 {
     public class ContactsController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        
+        private readonly IRepository<Contact> _ContactsRepository;
 
-        public ContactsController(ApplicationDbContext context)
+        public ContactsController(IRepository<Contact> ContactsRepository)
         {
-            _context = context;
+          
+            _ContactsRepository = ContactsRepository;
         }
 
 
-        ///         Index         ///
+        /*        
+                                                Index
+
+        */
+
 
         [Authorize(Roles = "Admin")]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View(_context.Contacts.ToList());
+            return View(await _ContactsRepository.GetAllAsync());
 
         }
 
 
-        ///         Create         ///
+        /*        
+                                                 Create
+                                                 this create should not be there , for data integrity , as a moral bussiness should not create feedback or send messages to it self
+                                                 in the feuture and for business logic this should be as ticketing system and add viewed by user on time DateTime
+                                                 also add states as handled or not, or turned as real customer or not, and add converation rate on admin dashboard.
+                                    
+
+         */
 
         [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
-            return View();
+            return  View();
         }
+
+
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public IActionResult Create(Contact contact)
+        public async Task<IActionResult> Create(Contact contact)
         {
             if (ModelState.IsValid)
             {
+                await _ContactsRepository.AddAsync(contact);
+                await _ContactsRepository.SaveAsync();
 
-                _context.Contacts.Add(contact);
-                _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
             //same as return View() as long as action name same to view name
             //just to try diffrent ways
+            // I will update this to ViewModel later 
             return View("Create", contact);
         }
 
 
 
 
-        ///         Edit         ///
+        /*        
+                                             Edit
 
+       */
 
         [Authorize(Roles = "Admin")]
-        public IActionResult Edit(int id)
+        public async Task<IActionResult> Edit(int id)
         {
-            return View(_context.Contacts.Find(id));
+            return View(await _ContactsRepository.GetByIdAsync(id));
         }
 
         [HttpPost]
         [Authorize(Roles = "Admin")]
-        public IActionResult Edit(Contact contact)
+        public async Task<IActionResult> Edit(Contact contact)
         {
-            _context.Update(contact);
-            _context.SaveChanges();
+
+            _ContactsRepository.Update(contact);
+           await _ContactsRepository.SaveAsync();
+
+
             return RedirectToAction(nameof(Index));
         }
 
-        ///     Details    /// 
-        
-        public IActionResult Details(int id)
+
+        /*        
+                                            Details
+
+       */
+
+        public async Task<IActionResult> Details(int id)
         {
-            var contact = _context.Contacts.FirstOrDefault(c => c.Id == id);
+            var contact = await _ContactsRepository.GetByIdAsync(id);
+
+
             if (contact == null)
             {
                 return NotFound();
@@ -80,51 +109,22 @@ namespace NewsWebsite.Controllers
 
 
 
-        ///    Delete    /// 
+    /*        
+                                         Delete
+                        later I will handle all delete with bootstrap modal pop up 
+
+     */
         [Authorize(Roles = "Admin")]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            ;
-            _context.Remove(_context.Contacts.Find(id));
-            _context.SaveChanges();
+            var contact = await _ContactsRepository.GetByIdAsync(id);
+             _ContactsRepository.Delete(contact);
+
+            await _ContactsRepository.SaveAsync();
 
             return RedirectToAction("Index");
 
         }
-        ///         /// 
-
-
-        //public IActionResult anotherIndex()
-        //{
-        //    return View(_context.Contacts.ToList());
-        //}
-
-        //[ActionName("Contact")]
-        //public IActionResult ContactUs()
-        //{
-        //    return View();
-
-        //}
-
-        //[ValidateAntiForgeryToken]
-        //[HttpPost]
-        //public IActionResult ContactUs(Contact contact)
-        //{
-
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return View(contact);
-        //    }
-        //    else
-        //    {
-        //        _context.Contacts.Add(contact);
-        //        _context.SaveChanges();
-
-        //        return RedirectToAction("Index");
-
-        //    }
-
-        //}
 
 
 
