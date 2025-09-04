@@ -20,7 +20,14 @@ namespace NewsWebsite.Core.Repositories
             return await _context.NewsPosts.Where(newsPost => newsPost.CategoryId == CategoryId).ToListAsync();
         }
 
+        public async Task<IEnumerable<NewsPost>> GetAllNewsCategoryAsync()
+        {
+            var news = await _context.NewsPosts.Include(p => p.Category)
+                  .OrderByDescending(p => p.Id)
+                  .ToListAsync();
 
+            return news;
+        }
 
 
 

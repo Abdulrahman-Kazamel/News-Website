@@ -1,14 +1,10 @@
-﻿@{
-	ViewData["title"] = "Home";
-}
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
 	<meta charset="utf-8">
 	<meta content="width=device-width, initial-scale=1.0" name="viewport">
-	<title>News | @ViewData["title"]</title>
+	<title>News | @ViewData["Title"]</title>
 	<meta name="description" content="">
 	<meta name="keywords" content="">
 
@@ -21,18 +17,18 @@
 	<link href="https://fonts.googleapis.com/css2?family=Roboto&family=Poppins&family=Raleway&display=swap" rel="stylesheet">
 
 	<!-- Vendor CSS Files -->
-	<link href="~/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	<link href="~/lib/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-	<link href="~/lib/aos/aos.css" rel="stylesheet">
-	<link href="~/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
-	<link href="~/lib/glightbox/css/glightbox.min.css" rel="stylesheet">
-	<link href="~/lib/swiper/swiper-bundle.min.css" rel="stylesheet">
+	<link href="~/assets/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="~/assets/lib/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+	<link href="~/assets/lib/aos/aos.css" rel="stylesheet">
+	@* <link href="~/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet"> *@
+	<link href="~/assets/lib/glightbox/css/glightbox.min.css" rel="stylesheet">
+	<link href="~/assets/lib/swiper/swiper-bundle.min.css" rel="stylesheet">
 
 	<!-- Main CSS File -->
 	<link href="~/assets/css/main.css" rel="stylesheet">
 </head>
 
-<body class="index-page">
+<body>
 
 	<!-- ======= Header ======= -->
 	<header id="header" class="header sticky-top">
@@ -189,12 +185,13 @@
 	<!-- Preloader -->
 	<div id="preloader"></div>
 
+	<script src="~/assets/lib/jquery/dist/jquery.min.js"></script>
 	<!-- Vendor JS Files -->
-	<script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
-	<script src="~/lib/aos/aos.js"></script>
-	<script src="~/lib/glightbox/js/glightbox.js"></script>
-	<script src="~/assets/vendor/purecounter/purecounter_vanilla.js"></script>
-	<script src="~/lib/swiper/swiper-bundle.min.js"></script>
+	<script src="~/assets/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="~/assets/lib/aos/aos.js"></script>
+	<script src="~/assets/lib/glightbox/js/glightbox.js"></script>
+	<script src="~/assets/lib/purecounter/purecounter_vanilla.js"></script>
+	<script src="~/assets/lib/swiper/swiper-bundle.min.js"></script>
 
 	<!-- Main JS File -->
 	<script src="~/assets/js/main.js"></script>

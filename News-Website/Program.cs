@@ -19,6 +19,8 @@
             builder.Services.AddScoped<INewsPostRepository, NewsPostRepository>();
             builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 
+            builder.Services.AddScoped<UploadImageService>();
+
             // ------------------------------------------------------------
             // Identity Configuration
             // ------------------------------------------------------------

@@ -5,11 +5,12 @@ namespace NewsWebsite.ViewModels
 {
     public class NewsPostViewModel
     {
+        public int Id { get; set; }
         [Required(ErrorMessage = "Title is required")]
         [StringLength(500, ErrorMessage = "Title cannot exceed 500 characters")]
         public string Title { get; set; } = string.Empty;
 
-        [Required(ErrorMessage = "Date is required")]
+        //[Required(ErrorMessage = "Date is required")]
         public DateTime Date { get; set; } = default!;
 
 
@@ -21,12 +22,12 @@ namespace NewsWebsite.ViewModels
         [Display(Name = "Category")]
         [Required(ErrorMessage = "Please select a category")]
         public int CategoryId { get; set; }
-        //[BindNever]  // ✅ Prevent validation or binding
-        public List<SelectListItem>? Categories { get; set; }
+       
+        public   IEnumerable<SelectListItem>? Categories { get; set; } 
 
         //[Required(ErrorMessage = "Please select an image file")]
         [NotMapped]
-        public IFormFile File { get; set; } = default!;
+        public IFormFile? File { get; set; } 
 
        
        

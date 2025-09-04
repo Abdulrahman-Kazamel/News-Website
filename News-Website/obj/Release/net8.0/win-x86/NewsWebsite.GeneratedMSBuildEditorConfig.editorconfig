@@ -96,10 +96,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/EW/Documents/GitHub/News-Website/News-Website/Views/Categories/AdminEnhancedDetails.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmllc1xBZG1pbkVuaGFuY2VkRGV0YWlscy5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/EW/Documents/GitHub/News-Website/News-Website/Views/Categories/CategoryNews.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmllc1xDYXRlZ29yeU5ld3MuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -152,16 +148,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/EW/Documents/GitHub/News-Website/News-Website/Views/NewsPosts/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmV3c1Bvc3RzXENyZWF0ZS5jc2h0bWw=
+[C:/Users/EW/Documents/GitHub/News-Website/News-Website/Views/NewsPosts/CreateEditPostViewForm.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmV3c1Bvc3RzXENyZWF0ZUVkaXRQb3N0Vmlld0Zvcm0uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/EW/Documents/GitHub/News-Website/News-Website/Views/NewsPosts/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmV3c1Bvc3RzXERldGFpbHMuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/EW/Documents/GitHub/News-Website/News-Website/Views/NewsPosts/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmV3c1Bvc3RzXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/EW/Documents/GitHub/News-Website/News-Website/Views/NewsPosts/Index.cshtml]

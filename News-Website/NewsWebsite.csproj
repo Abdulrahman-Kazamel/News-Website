@@ -26,8 +26,6 @@
 
   <ItemGroup>
     <Folder Include="Core\Models\" />
-    <Folder Include="wwwroot\lib\jquery\" />
-    <Folder Include="wwwroot\lib\jquery\dist\" />
   </ItemGroup>
 
 </Project>

@@ -3,36 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\EW\\Documents\\GitHub\\News-Website\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{FEFB7D53-2912-4BD1-9A32-88EF47073A97}|News-Website\\NewsWebsite.csproj|c:\\users\\ew\\documents\\github\\news-website\\news-website\\controllers\\contactscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FEFB7D53-2912-4BD1-9A32-88EF47073A97}|News-Website\\NewsWebsite.csproj|solutionrelative:news-website\\controllers\\contactscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FEFB7D53-2912-4BD1-9A32-88EF47073A97}|News-Website\\NewsWebsite.csproj|c:\\users\\ew\\documents\\github\\news-website\\news-website\\core\\repositories\\newspostrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FEFB7D53-2912-4BD1-9A32-88EF47073A97}|News-Website\\NewsWebsite.csproj|solutionrelative:news-website\\core\\repositories\\newspostrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FEFB7D53-2912-4BD1-9A32-88EF47073A97}|News-Website\\NewsWebsite.csproj|c:\\users\\ew\\documents\\github\\news-website\\news-website\\views\\categories\\categorynews.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{FEFB7D53-2912-4BD1-9A32-88EF47073A97}|News-Website\\NewsWebsite.csproj|solutionrelative:news-website\\views\\categories\\categorynews.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FEFB7D53-2912-4BD1-9A32-88EF47073A97}|News-Website\\NewsWebsite.csproj|c:\\users\\ew\\documents\\github\\news-website\\news-website\\core\\repositories\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FEFB7D53-2912-4BD1-9A32-88EF47073A97}|News-Website\\NewsWebsite.csproj|solutionrelative:news-website\\core\\repositories\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FEFB7D53-2912-4BD1-9A32-88EF47073A97}|News-Website\\NewsWebsite.csproj|c:\\users\\ew\\documents\\github\\news-website\\news-website\\views\\contacts\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{FEFB7D53-2912-4BD1-9A32-88EF47073A97}|News-Website\\NewsWebsite.csproj|solutionrelative:news-website\\views\\contacts\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FEFB7D53-2912-4BD1-9A32-88EF47073A97}|News-Website\\NewsWebsite.csproj|c:\\users\\ew\\documents\\github\\news-website\\news-website\\views\\contacts\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{FEFB7D53-2912-4BD1-9A32-88EF47073A97}|News-Website\\NewsWebsite.csproj|solutionrelative:news-website\\views\\contacts\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FEFB7D53-2912-4BD1-9A32-88EF47073A97}|News-Website\\NewsWebsite.csproj|c:\\users\\ew\\documents\\github\\news-website\\news-website\\controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FEFB7D53-2912-4BD1-9A32-88EF47073A97}|News-Website\\NewsWebsite.csproj|solutionrelative:news-website\\controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FEFB7D53-2912-4BD1-9A32-88EF47073A97}|News-Website\\NewsWebsite.csproj|c:\\users\\ew\\documents\\github\\news-website\\news-website\\views\\categories\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{FEFB7D53-2912-4BD1-9A32-88EF47073A97}|News-Website\\NewsWebsite.csproj|solutionrelative:news-website\\views\\categories\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{FEFB7D53-2912-4BD1-9A32-88EF47073A97}|News-Website\\NewsWebsite.csproj|c:\\users\\ew\\documents\\github\\news-website\\news-website\\views\\newsposts\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FEFB7D53-2912-4BD1-9A32-88EF47073A97}|News-Website\\NewsWebsite.csproj|solutionrelative:news-website\\views\\newsposts\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,73 +14,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 11,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Repository.cs",
-              "DocumentMoniker": "C:\\Users\\EW\\Documents\\GitHub\\News-Website\\News-Website\\Core\\Repositories\\Repository.cs",
-              "RelativeDocumentMoniker": "News-Website\\Core\\Repositories\\Repository.cs",
-              "ToolTip": "C:\\Users\\EW\\Documents\\GitHub\\News-Website\\News-Website\\Core\\Repositories\\Repository.cs",
-              "RelativeToolTip": "News-Website\\Core\\Repositories\\Repository.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-31T13:35:44.69Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\EW\\Documents\\GitHub\\News-Website\\News-Website\\Views\\Contacts\\Index.cshtml",
-              "RelativeDocumentMoniker": "News-Website\\Views\\Contacts\\Index.cshtml",
-              "ToolTip": "C:\\Users\\EW\\Documents\\GitHub\\News-Website\\News-Website\\Views\\Contacts\\Index.cshtml",
-              "RelativeToolTip": "News-Website\\Views\\Contacts\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-31T13:31:42.869Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Edit.cshtml",
-              "DocumentMoniker": "C:\\Users\\EW\\Documents\\GitHub\\News-Website\\News-Website\\Views\\Contacts\\Edit.cshtml",
-              "RelativeDocumentMoniker": "News-Website\\Views\\Contacts\\Edit.cshtml",
-              "ToolTip": "C:\\Users\\EW\\Documents\\GitHub\\News-Website\\News-Website\\Views\\Contacts\\Edit.cshtml",
-              "RelativeToolTip": "News-Website\\Views\\Contacts\\Edit.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-31T13:31:41.846Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "NewsPostRepository.cs",
-              "DocumentMoniker": "C:\\Users\\EW\\Documents\\GitHub\\News-Website\\News-Website\\Core\\Repositories\\NewsPostRepository.cs",
-              "RelativeDocumentMoniker": "News-Website\\Core\\Repositories\\NewsPostRepository.cs",
-              "ToolTip": "C:\\Users\\EW\\Documents\\GitHub\\News-Website\\News-Website\\Core\\Repositories\\NewsPostRepository.cs",
-              "RelativeToolTip": "News-Website\\Core\\Repositories\\NewsPostRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-31T13:23:25.127Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ContactsController.cs",
-              "DocumentMoniker": "C:\\Users\\EW\\Documents\\GitHub\\News-Website\\News-Website\\Controllers\\ContactsController.cs",
-              "RelativeDocumentMoniker": "News-Website\\Controllers\\ContactsController.cs",
-              "ToolTip": "C:\\Users\\EW\\Documents\\GitHub\\News-Website\\News-Website\\Controllers\\ContactsController.cs",
-              "RelativeToolTip": "News-Website\\Controllers\\ContactsController.cs",
-              "ViewState": "AgIAAFkAAAAAAAAAAAAswHIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-31T13:07:36.691Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
@@ -155,40 +62,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "CategoriesController.cs",
-              "DocumentMoniker": "C:\\Users\\EW\\Documents\\GitHub\\News-Website\\News-Website\\Controllers\\CategoriesController.cs",
-              "RelativeDocumentMoniker": "News-Website\\Controllers\\CategoriesController.cs",
-              "ToolTip": "C:\\Users\\EW\\Documents\\GitHub\\News-Website\\News-Website\\Controllers\\CategoriesController.cs",
-              "RelativeToolTip": "News-Website\\Controllers\\CategoriesController.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAQwA4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-30T15:05:31.998Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 0,
               "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\EW\\Documents\\GitHub\\News-Website\\News-Website\\Views\\Categories\\Index.cshtml",
-              "RelativeDocumentMoniker": "News-Website\\Views\\Categories\\Index.cshtml",
-              "ToolTip": "C:\\Users\\EW\\Documents\\GitHub\\News-Website\\News-Website\\Views\\Categories\\Index.cshtml",
-              "RelativeToolTip": "News-Website\\Views\\Categories\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "DocumentMoniker": "C:\\Users\\EW\\Documents\\GitHub\\News-Website\\News-Website\\Views\\NewsPosts\\Index.cshtml",
+              "RelativeDocumentMoniker": "News-Website\\Views\\NewsPosts\\Index.cshtml",
+              "ToolTip": "C:\\Users\\EW\\Documents\\GitHub\\News-Website\\News-Website\\Views\\NewsPosts\\Index.cshtml",
+              "RelativeToolTip": "News-Website\\Views\\NewsPosts\\Index.cshtml",
+              "ViewState": "AgIAADAAAAAAAAAAAAAuwEQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-30T15:02:43.616Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "CategoryNews.cshtml",
-              "DocumentMoniker": "C:\\Users\\EW\\Documents\\GitHub\\News-Website\\News-Website\\Views\\Categories\\CategoryNews.cshtml",
-              "RelativeDocumentMoniker": "News-Website\\Views\\Categories\\CategoryNews.cshtml",
-              "ToolTip": "C:\\Users\\EW\\Documents\\GitHub\\News-Website\\News-Website\\Views\\Categories\\CategoryNews.cshtml",
-              "RelativeToolTip": "News-Website\\Views\\Categories\\CategoryNews.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-30T15:01:38.978Z",
+              "WhenOpened": "2025-09-04T17:02:54.376Z",
               "EditorCaption": ""
             }
           ]

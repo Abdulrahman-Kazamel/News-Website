@@ -61,7 +61,7 @@ namespace NewsWebsite.Controllers
         {
             if (ModelState.IsValid)
             {
-                _CategoryRepository.AddAsync(category);
+               await _CategoryRepository.AddAsync(category);
 
                 await _CategoryRepository.SaveAsync();
 

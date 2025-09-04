@@ -16,5 +16,7 @@ namespace NewsWebsite.Core.Repositories
         {
             return _context.Categories.Any(C => C.Id == CategoryId);
         }
+
+
     }
 }
