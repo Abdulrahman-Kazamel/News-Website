@@ -115,7 +115,9 @@ h6 {
     color: var(--heading-color);
     font-family: var(--heading-font);
 }
-
+td {
+    word-break: break-word;
+}
 /* Pulsating Play Button
 ------------------------------*/
 .pulsating-play-btn {
