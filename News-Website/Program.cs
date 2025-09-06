@@ -21,6 +21,13 @@
 
             builder.Services.AddScoped<UploadImageService>();
 
+
+            // add logging 
+            builder.Services.AddLogging(cfg =>
+            {
+                cfg.AddDebug();
+                cfg.AddConsole();
+            });
             // ------------------------------------------------------------
             // Identity Configuration
             // ------------------------------------------------------------
@@ -55,7 +62,7 @@
             // ------------------------------------------------------------
             // Database Seed: Roles + Admin User
             // ------------------------------------------------------------
-            using (var scope = app.Services.CreateScope())
+            using(var scope = app.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
                 var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
@@ -63,9 +70,9 @@
 
                 // Ensure roles exist
                 string[] roleNames = { "Admin", "default" };
-                foreach (var roleName in roleNames)
+                foreach(var roleName in roleNames)
                 {
-                    if (!await roleManager.RoleExistsAsync(roleName))
+                    if(!await roleManager.RoleExistsAsync(roleName))
                         await roleManager.CreateAsync(new IdentityRole(roleName));
                 }
 
@@ -75,7 +82,7 @@
 
                 // Delete old admin if exists
                 var oldAdmin = await userManager.FindByEmailAsync(adminEmail);
-                if (oldAdmin != null)
+                if(oldAdmin != null)
                 {
                     await userManager.DeleteAsync(oldAdmin);
                     Console.WriteLine("🗑️ Old admin user deleted.");
@@ -90,7 +97,7 @@
                 };
 
                 var createResult = await userManager.CreateAsync(adminUser, adminPassword);
-                if (!createResult.Succeeded)
+                if(!createResult.Succeeded)
                 {
                     throw new Exception("❌ Failed to create admin user: " +
                         string.Join(", ", createResult.Errors.Select(e => e.Description)));
@@ -101,7 +108,7 @@
                 }
 
                 // Assign Admin role
-                if (!await userManager.IsInRoleAsync(adminUser, "Admin"))
+                if(!await userManager.IsInRoleAsync(adminUser, "Admin"))
                 {
                     await userManager.AddToRoleAsync(adminUser, "Admin");
                     Console.WriteLine("✅ Admin role assigned.");
@@ -111,7 +118,7 @@
             // ------------------------------------------------------------
             // Middleware Pipeline
             // ------------------------------------------------------------
-            if (app.Environment.IsDevelopment())
+            if(app.Environment.IsDevelopment())
             {
                 app.UseMigrationsEndPoint();
             }

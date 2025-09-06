@@ -15,7 +15,12 @@ namespace NewsWebsite.Controllers
         private readonly ILogger<NewsPostsController> _logger;
 
 
-        public NewsPostsController(INewsPostRepository newsPostRepository, ICategoryRepository categoryRepository, UploadImageService uploadImageService, ILogger<NewsPostsController> logger)
+        public NewsPostsController(
+            INewsPostRepository newsPostRepository,
+            ICategoryRepository categoryRepository,
+            UploadImageService uploadImageService,
+            ILogger<NewsPostsController> logger)
+
         {
             _newsPostRepository = newsPostRepository;
             _categoryRepository = categoryRepository;
@@ -64,9 +69,9 @@ namespace NewsWebsite.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(NewsPostViewModel viewModel)
         {
-                var Categories = await _categoryRepository.GetAllAsync();
+            var Categories = await _categoryRepository.GetAllAsync();
 
-            if (!ModelState.IsValid)
+            if(!ModelState.IsValid)
             {
                 //Categories = await _categoryRepository.GetAllAsync();
                 LogModelStateErrors(); // Debug log
@@ -77,10 +82,10 @@ namespace NewsWebsite.Controllers
 
             string? uploadedFileName = _uploadImageService.UploadImage(viewModel.File);
 
-            if (string.IsNullOrEmpty(uploadedFileName))
+            if(string.IsNullOrEmpty(uploadedFileName))
             {
                 ModelState.AddModelError("File", "Please select a valid image file (JPG, JPEG, PNG, GIF) under 4MB.");
-                 //Categories = await _categoryRepository.GetAllAsync();
+                //Categories = await _categoryRepository.GetAllAsync();
                 viewModel.Categories = new SelectList(Categories, "Id", "Name");
                 return View("CreateEditPostViewForm", viewModel);
             }
@@ -103,11 +108,11 @@ namespace NewsWebsite.Controllers
                 await _newsPostRepository.SaveAsync();
                 return RedirectToAction("Index");
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 _logger.LogError(ex, "Error saving NewsPost.");
                 ModelState.AddModelError("", "An error occurred while saving. Please try again.");
-                 //Categories = await _categoryRepository.GetAllAsync();
+                //Categories = await _categoryRepository.GetAllAsync();
                 viewModel.Categories = new SelectList(Categories, "Id", "Name");
                 return View("CreateEditPostViewForm", viewModel);
             }
@@ -125,7 +130,7 @@ namespace NewsWebsite.Controllers
         {
             var newsPost = await _newsPostRepository.GetByIdAsync(id);
 
-            if (newsPost == null)
+            if(newsPost == null)
             {
                 return NotFound();
             }
@@ -140,7 +145,7 @@ namespace NewsWebsite.Controllers
                 Date = newsPost.Date,
                 Topic = newsPost.Topic,
                 Image = newsPost.Image,
-               
+
                 CategoryId = newsPost.CategoryId,
                 Categories = new SelectList(Categories, "Id", "Name")
 
@@ -156,9 +161,9 @@ namespace NewsWebsite.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, NewsPostViewModel viewModel)
         {
-            if (!ModelState.IsValid)
+            if(!ModelState.IsValid)
             {
-                
+
                 var Categories = await _categoryRepository.GetAllAsync();
                 viewModel.Categories = new SelectList(Categories, "Id", "Name");
 
@@ -166,13 +171,13 @@ namespace NewsWebsite.Controllers
             }
 
             var newsPost = await _newsPostRepository.GetByIdAsync(id);
-            if (newsPost == null) return NotFound();
-            
+            if(newsPost == null) return NotFound();
+
             if(viewModel.File != null)
             {
-            string? uploadedFileName = _uploadImageService.UploadImage(viewModel.File);
+                string? uploadedFileName = _uploadImageService.UploadImage(viewModel.File);
                 // Handle image upload
-                if (!string.IsNullOrEmpty(uploadedFileName))
+                if(!string.IsNullOrEmpty(uploadedFileName))
                 {
                     newsPost.Image = uploadedFileName;
                 }
@@ -222,7 +227,7 @@ namespace NewsWebsite.Controllers
         public async Task<IActionResult> Delete(int id)
         {
             var newsPost = await _newsPostRepository.GetByIdAsync(id);
-            if (newsPost == null)
+            if(newsPost == null)
             {
                 return NotFound();
             }
@@ -242,10 +247,10 @@ namespace NewsWebsite.Controllers
         {
             _logger.LogWarning("Model validation failed. Listing all errors:");
 
-            foreach (var entry in ModelState)
+            foreach(var entry in ModelState)
             {
                 var key = entry.Key;
-                foreach (var error in entry.Value.Errors)
+                foreach(var error in entry.Value.Errors)
                 {
                     _logger.LogWarning($"[ModelState] Field: {key} - Error: {error.ErrorMessage}");
                 }

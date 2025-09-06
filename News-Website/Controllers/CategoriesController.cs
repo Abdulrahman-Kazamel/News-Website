@@ -6,19 +6,21 @@ namespace NewsWebsite.Controllers
     {
         private readonly ICategoryRepository _CategoryRepository;
         private readonly INewsPostRepository _NewsPostsRepository;
+        private readonly ILogger<CategoriesController> _logger;
 
-        public CategoriesController( ICategoryRepository CategoryRepository, INewsPostRepository NewsPostRepository)
+        public CategoriesController(ICategoryRepository CategoryRepository,
+            INewsPostRepository NewsPostRepository,
+            ILogger<CategoriesController> logger)
         {
             _CategoryRepository = CategoryRepository;
             _NewsPostsRepository = NewsPostRepository;
+            _logger = logger;
         }
-
         /*
                                 Index
-
         */
 
-        [Authorize(Roles ="Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Index()
         {
             return View(await _CategoryRepository.GetAllAsync());
@@ -26,7 +28,7 @@ namespace NewsWebsite.Controllers
 
         /*
                                 Details
-         
+
          */
 
         [Authorize(Roles = "Admin")]
@@ -54,17 +56,17 @@ namespace NewsWebsite.Controllers
             return View();
         }
 
+
         [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,TitleIcon,Name,Description")] Category category)
+        public async Task<IActionResult> Create(
+            [Bind("Id,TitleIcon,Name,Description")] Category category)
         {
-            if (ModelState.IsValid)
+            if(ModelState.IsValid)
             {
-               await _CategoryRepository.AddAsync(category);
-
+                await _CategoryRepository.AddAsync(category);
                 await _CategoryRepository.SaveAsync();
-
                 return RedirectToAction(nameof(Index));
             }
             return View(category);
@@ -80,14 +82,14 @@ namespace NewsWebsite.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null)
+            if(id == null)
             {
                 return NotFound();
             }
 
             var category = await _CategoryRepository.GetByIdAsync(id.Value);
 
-            if (category == null)
+            if(category == null)
             {
                 return NotFound();
             }
@@ -99,21 +101,21 @@ namespace NewsWebsite.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,TitleIcon,Name,Description")] Category category)
         {
-            if (id != category.Id)
+            if(id != category.Id)
             {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            if(ModelState.IsValid)
             {
                 try
                 {
                     _CategoryRepository.Update(category);
                     await _CategoryRepository.SaveAsync();
                 }
-                catch (DbUpdateConcurrencyException)
+                catch(DbUpdateConcurrencyException)
                 {
-                    if (!_CategoryRepository.CategoryExists(category.Id))
+                    if(!_CategoryRepository.CategoryExists(category.Id))
                     {
                         return NotFound();
                     }
@@ -135,13 +137,13 @@ namespace NewsWebsite.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null)
+            if(id == null)
             {
                 return NotFound();
             }
 
             var category = await _CategoryRepository.GetByIdAsync(id.Value);
-            if (category == null)
+            if(category == null)
             {
                 return NotFound();
             }
@@ -158,7 +160,7 @@ namespace NewsWebsite.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var category = await _CategoryRepository.GetByIdAsync(id);
-            if (category != null)
+            if(category != null)
             {
                 _CategoryRepository.Delete(category);
             }
@@ -179,16 +181,16 @@ namespace NewsWebsite.Controllers
         public async Task<IActionResult> CategoryNews(int id)
         {
 
-            //this need to think about bussiness logic later
-            //for now if id is 0 or null return all news posts from all categories
-            if (id == 0 || id == null)
+
+            //if id is not found return all news posts from all categories
+            var Category = await _CategoryRepository.GetByIdAsync(id);
+            if(Category == null)
             {
-
+                _logger.LogWarning("⚠️ Category Called without id : #{id} on time : {time}", id,DateTime.Now);
                 return View(await _NewsPostsRepository.GetAllAsync());
-
                 //_context.NewsPosts.ToList());
             }
-            var Category = await _CategoryRepository.GetByIdAsync(id);
+            _logger.LogInformation("Category Called without id : #{id}", id);
             ViewBag.Category = Category.Name;
             return View(await _NewsPostsRepository.GetCategoryByIdAsync(id));
 

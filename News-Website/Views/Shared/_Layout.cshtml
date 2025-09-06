@@ -67,7 +67,12 @@
 					<ul>
 						<li><a asp-controller="Home" asp-action="Index">Home</a></li>
 
-						<li><a asp-controller="Categories" asp-action="CategoryNews">News</a></li>
+						@* this All route came by test and luck xD
+						because at begining it was working at the first time only to get all,
+						then is send the category Id on the second time
+						however i have if check on the controller , but i don't know why it keep sending the same  
+						*@
+						<li><a asp-controller="Categories" asp-action="CategoryNews" asp-route-id="All">News</a></li>
 
 						@if (User.IsInRole("Admin"))
 						{
