@@ -1,4 +1,7 @@
-﻿namespace NewsWebsite
+﻿using System.Net.Mail;
+using NewsWebsite.Core.Models;
+
+namespace NewsWebsite
 {
     public class Program
     {
@@ -11,10 +14,10 @@
             // ------------------------------------------------------------
             var connectionString = builder.Configuration.GetConnectionString("NewsConnection")
                 ?? throw new InvalidOperationException("Connection string 'NewsConnection' not found.");
-            //Register my Repositories
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(connectionString));
 
+            //Register my Repositories
             builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             builder.Services.AddScoped<INewsPostRepository, NewsPostRepository>();
             builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
@@ -25,17 +28,17 @@
             // add logging 
             builder.Services.AddLogging(cfg =>
             {
-                cfg.AddDebug();
+                //cfg.AddDebug();
                 cfg.AddConsole();
             });
             // ------------------------------------------------------------
             // Identity Configuration
             // ------------------------------------------------------------
             builder.Services
-                .AddIdentity<IdentityUser, IdentityRole>()
+                .AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddDefaultTokenProviders()
-                .AddDefaultUI();
+                .AddDefaultUI()
+                .AddDefaultTokenProviders();
 
             builder.Services.Configure<IdentityOptions>(options =>
             {
@@ -66,9 +69,9 @@
             {
                 var services = scope.ServiceProvider;
                 var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
-                var userManager = services.GetRequiredService<UserManager<IdentityUser>>();
+                var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
 
-                // Ensure roles exist
+                // Ensure roles exist and create them
                 string[] roleNames = { "Admin", "default" };
                 foreach(var roleName in roleNames)
                 {
@@ -80,69 +83,56 @@
                 var adminEmail = "admin@example.com";
                 var adminPassword = "Admin@1234";
 
-                // Delete old admin if exists
-                var oldAdmin = await userManager.FindByEmailAsync(adminEmail);
-                if(oldAdmin != null)
+
+
+                // Create  admin
+                var adminInDb = await userManager.FindByEmailAsync(adminEmail);
+                if(adminInDb == null)
                 {
-                    await userManager.DeleteAsync(oldAdmin);
-                    Console.WriteLine("🗑️ Old admin user deleted.");
+                    var adminUser = new ApplicationUser
+                    {
+                        UserName = adminEmail,
+                        Email = adminEmail,
+                        EmailConfirmed = true
+                    };
+
+                    var createResult = await userManager.CreateAsync(adminUser, adminPassword);
+                    if(createResult.Succeeded)
+                    {
+                        await userManager.AddToRoleAsync(adminUser, "Admin");
+
+                    }
                 }
 
-                // Create fresh admin
-                var adminUser = new IdentityUser
+                // ------------------------------------------------------------
+                // Middleware Pipeline
+                // ------------------------------------------------------------
+                if(app.Environment.IsDevelopment())
                 {
-                    UserName = adminEmail, // ✅ match email to username
-                    Email = adminEmail,
-                    EmailConfirmed = true
-                };
-
-                var createResult = await userManager.CreateAsync(adminUser, adminPassword);
-                if(!createResult.Succeeded)
-                {
-                    throw new Exception("❌ Failed to create admin user: " +
-                        string.Join(", ", createResult.Errors.Select(e => e.Description)));
+                    app.UseMigrationsEndPoint();
                 }
                 else
                 {
-                    Console.WriteLine($"✅ Admin created: {adminEmail} / {adminPassword}");
+                    app.UseExceptionHandler("/Home/Error");
+                    app.UseHsts();
                 }
 
-                // Assign Admin role
-                if(!await userManager.IsInRoleAsync(adminUser, "Admin"))
-                {
-                    await userManager.AddToRoleAsync(adminUser, "Admin");
-                    Console.WriteLine("✅ Admin role assigned.");
-                }
+                app.UseHttpsRedirection();
+                app.UseStaticFiles();
+
+                app.UseRouting();
+
+                app.UseAuthentication();
+                app.UseAuthorization();
+
+                app.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                app.MapRazorPages();
+
+                app.Run();
             }
-
-            // ------------------------------------------------------------
-            // Middleware Pipeline
-            // ------------------------------------------------------------
-            if(app.Environment.IsDevelopment())
-            {
-                app.UseMigrationsEndPoint();
-            }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
-                app.UseHsts();
-            }
-
-            app.UseHttpsRedirection();
-            app.UseStaticFiles();
-
-            app.UseRouting();
-
-            app.UseAuthentication();
-            app.UseAuthorization();
-
-            app.MapControllerRoute(
-                name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
-
-            app.MapRazorPages();
-
-            app.Run();
         }
     }
 }

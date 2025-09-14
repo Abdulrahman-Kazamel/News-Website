@@ -1,5 +1,6 @@
 ﻿global using Microsoft.EntityFrameworkCore;
 global using Microsoft.AspNetCore.Identity;
+global using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 global using NewsWebsite.Core.Context;
 global using NewsWebsite.Core.Interfaces;
 global using NewsWebsite.Core.Repositories;

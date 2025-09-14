@@ -29,10 +29,12 @@ wwwroot\assets\img\gallery\5496775d-caae-4a16-b3b7-669607680093.png
 wwwroot\assets\img\gallery\58c0aa83-eb4d-4958-8059-e21dafc3aca1.jpg
 wwwroot\assets\img\gallery\5e11a325-ef39-4362-82f3-da79f6e3e582.jpg
 wwwroot\assets\img\gallery\62bbec08-b6c1-450a-a228-aa9e8c6b2caa.png
+wwwroot\assets\img\gallery\6d7ee0b9-ceba-473b-8325-af2076e9d17d.png
 wwwroot\assets\img\gallery\8f34284c-c627-49b8-beb2-507894287b7b.jpg
 wwwroot\assets\img\gallery\98398f43-1c94-4e00-9531-75043987fcad.png
 wwwroot\assets\img\gallery\984fcedc-2525-42ce-bcae-3e835196d792.png
 wwwroot\assets\img\gallery\9c45fb28-bd31-41b3-8ee6-883e9a2c31f5.png
+wwwroot\assets\img\gallery\a05a1b22-3f02-49d7-9952-fd38c82ce790.jpg
 wwwroot\assets\img\gallery\a2286fb2-87f0-406a-a58d-db4a9670c3fb.png
 wwwroot\assets\img\gallery\addb6f9b-ce00-4f32-81a4-f6e1a0fa31ea.png
 wwwroot\assets\img\gallery\aeb95577-b334-4dc1-a871-36ff54dcffa5.png
@@ -63,7 +65,7 @@ wwwroot\assets\img\services.jpg
 wwwroot\assets\img\testimonials\testimonials-1.jpg
 wwwroot\assets\img\testimonials\testimonials-2jpg
 wwwroot\assets\img\testimonials\testimonials-3.jpg
-wwwroot\assets\img\gallery\a05a1b22-3f02-49d7-9952-fd38c82ce790.jpg
+wwwroot\assets\js\main.js
 wwwroot\assets\lib\aos\aos.css
 wwwroot\assets\lib\aos\aos.js
 wwwroot\assets\lib\bootstrap-icons\font\bootstrap-icons.css
@@ -391,5 +393,3 @@ wwwroot\assets\lib\Swiper\swiper-bundle.min.mjs
 wwwroot\assets\lib\Swiper\swiper-bundle.min.mjs.map
 wwwroot\assets\lib\Swiper\swiper-bundle.mjs
 wwwroot\favicon.png
-wwwroot\assets\js\main.js
-wwwroot\assets\img\gallery\6d7ee0b9-ceba-473b-8325-af2076e9d17d.png
